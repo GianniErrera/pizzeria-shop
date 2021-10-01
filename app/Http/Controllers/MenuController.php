@@ -42,7 +42,7 @@ class MenuController extends Controller
         if(request('product_type') == "pizza") {
             $validated = $request->validate([
                 'name' => 'required|max:100',
-                'price' => 'numeric',
+                'price' => 'numeric|required',
                 'description' => 'nullable!string',
                 'vegetarian' => 'boolean',
                 'vegetarian' => 'boolean',
@@ -59,7 +59,7 @@ class MenuController extends Controller
         if(request('product_type') == "topping") {
             $validated = $request->validate([
                 'name' => 'required|max:50',
-                'price' => 'numeric',
+                'price' => 'numeric|required',
                 'description' => 'string',
                 'vegetarian' => 'boolean',
                 'vegan' => 'boolean',

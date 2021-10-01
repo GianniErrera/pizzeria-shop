@@ -71,7 +71,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" name="description" id="description" value="{{old('description')}}" rows="3"></textarea>
+                <textarea class="form-control" name="description" id="description" rows="3">{{old('description')}}</textarea>
             </div>
             <div class="form-group">
               <label for="price">Price</label>
@@ -80,7 +80,7 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                    <input type="checkbox" name="vegetarian" value="true"  {{ old('vegetarian') == true ? "checked" : "" }} aria-label="Vegetarian">
+                    <input type="checkbox" name="vegetarian" value="1"  {{ old('vegetarian') == true ? "checked" : "" }} aria-label="Vegetarian">
                     <span class="px-2">Vegetarian</span>
                   </div>
 
@@ -89,14 +89,14 @@
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                    <input type="checkbox" name="vegan" value="true" {{ old('vegan') == true ? "checked" : "" }} aria-label="Vegan">
+                    <input type="checkbox" name="vegan" value="1" {{ old('vegan') == true ? "checked" : "" }} aria-label="Vegan">
                     <span class="px-2">Vegan</span>
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="allergens">Allergens list</label>
-                <textarea class="form-control" name="allergens" id="allergens" rows="3"></textarea>
+                <textarea class="form-control" name="allergens" id="allergens" rows="3">{{old('allergens')}}</textarea>
                 </div>
 
             <div class="form-check">
