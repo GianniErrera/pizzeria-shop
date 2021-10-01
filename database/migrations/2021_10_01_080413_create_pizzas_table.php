@@ -17,10 +17,10 @@ class CreatePizzasTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->text('description')->nullable();
-            $table->float('price', 2, 2);
+            $table->float('price', 4, 2);
             $table->string('image', 100)->nullable();
-            $table->boolean('vegetarian')->nullable();
-            $table->boolean('vegan')->nullable();
+            $table->boolean('vegetarian')->default(false);
+            $table->boolean('vegan')->default(false);
             $table->boolean('hasToppings')->nullable();
             $table->text('allergens')->nullable();
             $table->timestamps();

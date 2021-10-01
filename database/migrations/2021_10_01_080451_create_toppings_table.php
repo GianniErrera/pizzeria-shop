@@ -17,7 +17,7 @@ class CreateToppingsTable extends Migration
             $table->id();
             $table->string('name', 50);
             $table->text('description')->nullable();
-            $table->float('price', 2, 2);
+            $table->float('price', 4, 2);
             $table->string('image', 100)->nullable();
             $table->boolean('vegetarian')->nullable();
             $table->boolean('vegan')->nullable();

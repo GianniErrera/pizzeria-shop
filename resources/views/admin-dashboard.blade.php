@@ -48,27 +48,83 @@
         </div>
       </nav>
     <div class="container">
-        <form>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form method="POST" action="/menu">
+            @csrf
             <div class="form-group">
-                <select class="custom-select custom-select-lg mb-2">
-                    <option selected>Pizza</option>
-                    <option value="1">Toppings</option>
+                <select name="product_type" class="custom-select custom-select-lg mb-2">
+                    <option value="pizza" selected>Pizza</option>
+                    <option value="topping">Topping</option>
                 </select>
             </div>
             <div class="form-group">
-              <label for="name">Email address</label>
-              <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter email">
+              <label for="name">Product name</label>
+              <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" aria-describedby="name" placeholder="Product name">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="description" value="{{old('description')}}" rows="3"></textarea>
             </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input type="text" class="form-control" name="price" id="price" value="{{old('price')}}" placeholder="Price">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="checkbox" aria-label="Vegetarian">
+                  </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="checkbox" aria-label="Vegan">
+                  </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Allergens list">
+              </div>
+              <div class="form-group">
+                <label for="allergens">Allergens list</label>
+                <textarea class="form-control" id="allergens" rows="3"></textarea>
+                </div>
+
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
+
+          <br>
+
+          <div class="container mb-4">
+              <div class="mb-2">
+                <h1 class="mb-2">Pizzas</h1>
+                @foreach ($pizzas as $pizza)
+                    <div class="row">
+                    {{ $pizza->name }} - {{ $pizza->description }} - €{{ $pizza->price }}
+
+                    </div>
+                @endforeach
+              </div>
+              <div class="mb-2">
+                <h1 class="mb-2">Toppings</h1>
+                @foreach ($toppings as $topping)
+                    <div class="row">
+                    {{ $topping->name }} - {{ $topping->description }} - €{{ $topping->price }}
+                    </div>
+                @endforeach
+              </div>
+          </div>
     </div>
 
     <!-- Optional JavaScript -->
