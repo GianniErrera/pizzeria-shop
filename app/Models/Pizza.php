@@ -9,5 +9,10 @@ class Pizza extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'description'];
+    protected $fillable = ['name', 'price', 'description', 'vegetarian', 'vegan', 'allergens'];
+
+    protected $casts = [
+        'vegetarian' => 'boolean',
+        'vegan' => 'boolean',
+    ];
 }

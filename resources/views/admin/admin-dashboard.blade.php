@@ -13,7 +13,7 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Pizzeria da Gianni</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,10 +21,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">Menu <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Incoming orders</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,8 +61,8 @@
             @csrf
             <div class="form-group">
                 <select name="product_type" class="custom-select custom-select-lg mb-2">
-                    <option value="pizza" selected>Pizza</option>
-                    <option value="topping">Topping</option>
+                    <option value="pizza" {{ old('product_type') == "pizza" ? "selected" : "" }}>Pizza</option>
+                    <option value="topping"  {{ old('product_type') == "topping" ? "selected" : "" }}>Topping</option>
                 </select>
             </div>
             <div class="form-group">
@@ -80,22 +80,23 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                    <input type="checkbox" aria-label="Vegetarian">
+                    <input type="checkbox" name="vegetarian" value="true"  {{ old('vegetarian') == true ? "checked" : "" }} aria-label="Vegetarian">
+                    <span class="px-2">Vegetarian</span>
                   </div>
+
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox">
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                    <input type="checkbox" aria-label="Vegan">
+                    <input type="checkbox" name="vegan" value="true" {{ old('vegan') == true ? "checked" : "" }} aria-label="Vegan">
+                    <span class="px-2">Vegan</span>
                   </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Allergens list">
               </div>
               <div class="form-group">
                 <label for="allergens">Allergens list</label>
-                <textarea class="form-control" id="allergens" rows="3"></textarea>
+                <textarea class="form-control" name="allergens" id="allergens" rows="3"></textarea>
                 </div>
 
             <div class="form-check">

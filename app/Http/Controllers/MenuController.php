@@ -15,7 +15,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('admin-dashboard', [
+        return view('admin.admin-dashboard', [
             'pizzas' => Pizza::all(),
             'toppings' => Topping::all()
         ]);
@@ -39,17 +39,32 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'price' => 'numeric',
-            'description' => 'string'
-        ]);
-
         if(request('product_type') == "pizza") {
+            $validated = $request->validate([
+                'name' => 'required|max:100',
+                'price' => 'numeric',
+                'description' => 'nullable!string',
+                'vegetarian' => 'boolean',
+                'vegetarian' => 'boolean',
+                'allergens' => 'nullable|string'
+
+
+
+            ]);
+
+
             Pizza::create($validated);
         }
 
         if(request('product_type') == "topping") {
+            $validated = $request->validate([
+                'name' => 'required|max:50',
+                'price' => 'numeric',
+                'description' => 'string',
+                'vegetarian' => 'boolean',
+                'vegan' => 'boolean',
+                'allergens' => 'string'
+            ]);
             Topping::create($validated);
         }
 
