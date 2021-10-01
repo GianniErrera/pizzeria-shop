@@ -45,11 +45,8 @@ class MenuController extends Controller
                 'price' => 'numeric|required',
                 'description' => 'nullable!string',
                 'vegetarian' => 'boolean',
-                'vegetarian' => 'boolean',
+                'vegan' => 'boolean',
                 'allergens' => 'nullable|string'
-
-
-
             ]);
 
 

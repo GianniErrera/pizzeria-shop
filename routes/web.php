@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\CustomersViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,10 @@ use App\Http\Controllers\MenuController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/admin', [MenuController::class, 'index']);
+Route::get('/', CustomersViewController::class);
 
 
 Route::post('/menu', [MenuController::class, 'store']);
