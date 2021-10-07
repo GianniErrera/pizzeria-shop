@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pizza;
-use App\Models\Topping;
+use App\Models\Product;
+use App\Models\Extra;
+
 
 class MenuController extends Controller
 {
@@ -16,8 +17,8 @@ class MenuController extends Controller
     public function index()
     {
         return view('admin.admin-dashboard', [
-            'pizzas' => Pizza::all(),
-            'toppings' => Topping::all()
+            'products' => Product::all(),
+            'extras' => Extra::all()
         ]);
     }
 
@@ -39,31 +40,32 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        if(request('product_type') == "pizza") {
+        if(request('category') != "2") {
             $validated = $request->validate([
-                'name' => 'required|max:100',
+                'name' => 'required|max:100|unique:products',
                 'price' => 'numeric|required',
-                'description' => 'nullable!string',
+                'category' => 'required|integer',
+                'description' => 'nullable|string',
                 'vegetarian' => 'boolean',
                 'vegan' => 'boolean',
                 'allergens' => 'nullable|string'
             ]);
-
-
-            Pizza::create($validated);
-        }
-
-        if(request('product_type') == "topping") {
+        Product::create($validated);
+        } else {
             $validated = $request->validate([
-                'name' => 'required|max:50',
+                'name' => 'required|max:100|unique:extras',
                 'price' => 'numeric|required',
-                'description' => 'string',
+                'category' => 'required|integer',
+                'description' => 'nullable|string',
                 'vegetarian' => 'boolean',
                 'vegan' => 'boolean',
-                'allergens' => 'string'
+                'allergens' => 'nullable|string'
             ]);
-            Topping::create($validated);
+        Extra::create($validated);
         }
+
+
+
 
 
         return back();

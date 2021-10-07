@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Pizza;
+use App\Models\Extra;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PizzaFactory extends Factory
+class ToppingFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Pizza::class;
+    protected $model = Extra::class;
 
     /**
      * Define the model's default state.

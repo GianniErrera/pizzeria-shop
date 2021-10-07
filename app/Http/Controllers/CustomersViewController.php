@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pizza;
-use App\Models\Topping;
+use App\Models\Product;
+use App\Models\OrderLine;
 
 class CustomersViewController extends Controller
 {
@@ -17,8 +17,8 @@ class CustomersViewController extends Controller
     public function __invoke(Request $request)
     {
         return view('public.customers-view', [
-            "pizzas" => Pizza::all(),
-            'toppings' => Topping::all()
+            "products" => Product::all(),
+            'orderlines' => OrderLine::where('order_id', session('order_id'))->get()
         ]);
     }
 }

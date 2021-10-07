@@ -8,11 +8,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <style>
+        .number {
+            width: 3em;
+        }
+    </style>
+
+    <title>Admin dashboard</title>
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="app">
         <a class="navbar-brand" href="#">Pizzeria da Gianni</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -60,9 +69,9 @@
         <form method="POST" action="/menu">
             @csrf
             <div class="form-group">
-                <select name="product_type" class="custom-select custom-select-lg mb-2">
-                    <option value="pizza" {{ old('product_type') == "pizza" ? "selected" : "" }}>Pizza</option>
-                    <option value="topping"  {{ old('product_type') == "topping" ? "selected" : "" }}>Topping</option>
+                <select name="category" class="custom-select custom-select-lg mb-2">
+                    <option value="1" {{ old('category') == "1" ? "selected" : "" }}>Pizza</option>
+                    <option value="2"  {{ old('category') == "2" ? "selected" : "" }}>Extra</option>
                 </select>
             </div>
             <div class="form-group">
@@ -110,18 +119,26 @@
           <div class="container mb-4">
               <div class="mb-2">
                 <h1 class="mb-2">Pizzas</h1>
-                @foreach ($pizzas as $pizza)
-                    <div class="row">
-                    {{ $pizza->name }} - {{ $pizza->description }} - €{{ $pizza->price }}
+                @foreach ($products as $product)
+                    @if($product->category == "1")
+                        <div class="row flex justify-content-between">
+                            <div>{{ $product->name }}</div>
+                            <div class="row flex justify-content-between">
+                                <div> {{ $product->description ? $product->description : "no description" }}</div>
 
-                    </div>
+                                    <div class="mx-2">€</div>
+                                    <div class="number">{{ $product->price }}</div>
+
+                            </div>
+                        </div>
+                    @endif
                 @endforeach
               </div>
               <div class="mb-2">
-                <h1 class="mb-2">Toppings</h1>
-                @foreach ($toppings as $topping)
-                    <div class="row">
-                    {{ $topping->name }} - {{ $topping->description }} - €{{ $topping->price }}
+                <h1 class="mb-2">Extras</h1>
+                @foreach ($extras as $extra)
+                    <div class="flex justify-content-between">
+                    {{ $extra->name }}  {{ $extra->description ?  "- " . $extra->description  : "" }} - €{{ $extra->price }}
                     </div>
                 @endforeach
               </div>

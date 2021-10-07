@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePizzasToppingsPivotTable extends Migration
+class CreateOrderExtras extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreatePizzasToppingsPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('pizzas_toppings_pivot', function (Blueprint $table) {
+        Schema::create('order_extras', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_line_id')->constrained()->onDelete('cascade');
+            $table->foreignId('extra_id')->constrained()->onDelete('cascade');
+            $table->unsignedTinyInteger('quantity');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreatePizzasToppingsPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pizzas_toppings_pivot');
+        Schema::dropIfExists('orders_extras');
     }
 }

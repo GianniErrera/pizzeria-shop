@@ -1,0 +1,44 @@
+Tabella
+
+
+Ordini_testata
+- id
+- user_id  (utente che ha fatto l'ordine) default null
+- tipo (0=carrello, 1=ordine)
+- data_ordine
+- cliente varchar
+- indirizzo1 varchar
+- indirizzo2 varchar
+- indirizzo3 varchar
+- note per consegna
+
+Ordini_riga
+- id
+- ordine_testata_id
+- prodotto_id
+- quantita
+- prezzo_unitario
+
+Ordine_riga_topping
+- ordine_testata_id
+- topping_id
+
+
+prodotto
+- id
+- nome
+- prezzo
+- flag_vegano
+
+topping
+- id
+- nome
+- prezzo
+
+Users
+- id
+- email
+
+Auth:
+/backend: forza la login di user ID 1 = admin
+/ (frontend): forza la login di user ID 2 = cliente

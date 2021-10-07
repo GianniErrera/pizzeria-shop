@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateToppingsTable extends Migration
+class CreateExtrasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateToppingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('toppings', function (Blueprint $table) {
+        Schema::create('extras', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
+            $table->string('name', 100)->unique();
             $table->text('description')->nullable();
-            $table->float('price', 4, 2);
+            $table->float('price', 5, 2);
+            $table->unsignedSmallInteger('category')->nullable();
             $table->string('image', 100)->nullable();
-            $table->boolean('vegetarian')->nullable();
-            $table->boolean('vegan')->nullable();
-            $table->boolean('hasToppings')->nullable();
+            $table->boolean('vegetarian')->default(false);
+            $table->boolean('vegan')->default(false);
             $table->text('allergens')->nullable();
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateToppingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('toppings');
+        Schema::dropIfExists('extras');
     }
 }
