@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="/orders/{{$product->id}}">
+        <form method="POST" action="/orderlines/{{$product->id}}">
             @csrf
             <div class="d-flex justify-content-between" id="app">
                 <div>{{ $product->name }} - €{{ $product->price }}</div>

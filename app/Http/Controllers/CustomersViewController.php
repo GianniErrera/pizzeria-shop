@@ -16,9 +16,15 @@ class CustomersViewController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $total = 0;
+        $orderlines = OrderLine::where('order_id', session('order_id'))->get();
+        foreach($orderlines as $orderline) {
+            $total += $orderline->totalPrice();
+        }
         return view('public.customers-view', [
             "products" => Product::all(),
-            'orderlines' => OrderLine::where('order_id', session('order_id'))->get()
+            'orderlines' => OrderLine::where('order_id', session('order_id'))->get(),
+            'total_order_price' => $total
         ]);
     }
 }

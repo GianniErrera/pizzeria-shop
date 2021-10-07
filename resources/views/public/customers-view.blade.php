@@ -17,32 +17,23 @@
   <body>
     <div class="container">
         <div>
-            <h1>Pizzas</h1>
-
-                @foreach ($products as $product)
-                    @if($product->category == "1")
-                        <form method="POST" action="/orders/{{$product->id}}">
-                            @csrf
-                            <div>
-                                <div class="d-flex justify-content-between">
-                                    <div><a href="{{route('product.show', ['product_id' => $product->id])}}">{{ $product->name }}</a> - €{{ $product->price }}</div>
-                                    <div>
-                                    <input name="quantity" type="number" min="1" max="100" class="number mx-4" type="text">
-                                    </div>
-
-                                    <button type="submit">Add to cart</button>
+            <h1 class="mb-2">Pizzas</h1>
+                <div class="mx-2">
+                    @foreach ($products as $product)
+                        @if($product->category == "1")
+                            <div class="d-flex">
+                                <div class="col">
+                                    <h2><a class="text-xl text-decoration-none" href="{{route('product.show', ['product_id' => $product->id])}}">
+                                        {{ $product->name }}
+                                    </a></h2>
                                 </div>
-                                <div>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        Launch demo modal
-                                    </button>
-
+                                <div class="ml-2 col">
+                                    <h2>€{{$product->price}}</h2>
                                 </div>
                             </div>
-
-                        </form>
-                    @endif
-                @endforeach
+                        @endif
+                    @endforeach
+                </div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -104,20 +95,51 @@
                             <div class="col">€{{ (int)$orderline->quantity * (float)$orderline->product->price + $total_extras }}</div>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <form action="/orderlines/{{$orderline->id}}">
-                            <button>Modify order</button>
-                        </form>
-                        <form action="">
-                            <button>Cancel order</button>
-                        </form>
+                    <div class="d-flex my-1">
+
+                            <form action="/orderlines/{{$orderline->id}}">
+                                <button class="btn btn-primary">Modify order</button>
+                            </form>
+                            <div class="mx-1"></div>
+
+                            <form
+                                action="orderlines/{{$orderline->id}}"
+                                method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button class="btn btn-danger ml-1" onclick="return confirm('Are you sure?')">Cancel order</button>
+                            </form>
+
                     </div>
                 </div>
 
 
-
             @endforeach
 
+            @if($orderlines)
+                <div class ="d-flex justify-content-between mt-2">
+                    <div class="col">
+                        <div class="d-flex">
+                        <form
+                            action="orders/{{session('order_id')}}"
+                            method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <button class="btn btn-danger ml-1" onclick="return confirm('Are you sure?')">Clear shopping cart</button>
+                        </form>
+                        <div class="mx-1"></div>
+                        <button class="btn btn-primary">
+                        Place order
+                        </button>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col">
+                        €{{$total_order_price}}
+
+                    </div>
+                </div>
+            @endif
 
 
         </div>

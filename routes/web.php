@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\MenuController;
+
 use App\Http\Controllers\CustomersViewController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderlineController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -24,10 +26,13 @@ Route::get('/admin', [MenuController::class, 'index']);
 Route::get('/', CustomersViewController::class)->name('customers-view');
 
 Route::get('/product/{product_id}', [ProductController::class, 'show'])->name('product.show');
-Route::get('/orderlines/{orderline}', [OrderController::class, 'edit']);
-Route::patch('/orderlines/{orderline}', [OrderController::class, 'update']);
+Route::get('/orderlines/{orderline}', [OrderlineController::class, 'edit']);
+Route::post('/orderlines/{product_id}', [OrderlineController::class, 'store']);
+Route::patch('/orderlines/{orderline}', [OrderlineController::class, 'update']);
+Route::delete('/orderlines/{orderline}', [OrderlineController::class, 'destroy']);
+Route::delete('/orders/{order}', [OrderController::class, 'destroy']);
 
 
 Route::post('/menu', [MenuController::class, 'store']);
 
-Route::post('/orders/{product_id}', [OrderController::class, 'store']);
+

@@ -15,6 +15,19 @@ class OrderLine extends Model
 
     protected $fillable = ['order_id', 'product_id', 'quantity'];
 
+    public function totalPrice() {
+        $total = 0;
+        $product_price = $this->product->price;
+        $total += $product_price * $this->quantity;
+
+        $orderExtras = OrderExtra::where('order_line_id', $this->id)->get();
+        foreach($orderExtras as $orderExtra) {
+            $total += $orderExtra->extra->price * $this->quantity;
+        }
+
+        return $total;
+    }
+
     public function order() {
         return $this->belongsTo(Order::class);
     }

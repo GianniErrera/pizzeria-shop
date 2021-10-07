@@ -44,7 +44,7 @@
                 </div>
                 @endforeach
             </div>
-            <button type="submit">Add to cart</button>
+            <button type="submit">Update order</button>
         </form>
 
     </div>
