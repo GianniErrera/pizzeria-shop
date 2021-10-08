@@ -16,6 +16,11 @@
   </head>
   <body>
     <div class="container">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
         <div>
             <h1 class="mb-2">Pizzas</h1>
                 <div class="mx-2">
@@ -131,7 +136,7 @@
                                 <div class="mx-1"></div>
 
                                     <a class="btn btn-primary"
-                                        href="{{route('order.confirm', ['order' => $order->id ])}}">
+                                        href="{{route('user.form', ['order' => $order->id ])}}">
                                         Place order
                                     </a>
                             @endif

@@ -16,37 +16,44 @@
   </head>
   <body>
     <div class="app container">
-
-        <form>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form method="POST" action="{{route('order.confirm', ['order' => $order->id ])}}">
+            @csrf
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control" name="name" id="name" aria-describedby="name" placeholder="Name" required>
+              <input type="text" class="form-control" name="customer_name" id="name" value="{{old('name')}}" aria-describedby="name" placeholder="Name" required>
             </div>
             <div class="form-group">
               <label for="surname">Surname</label>
-              <input type="text" class="form-control" name="surname" id="surname" placeholder="Surname" required>
+              <input type="text" class="form-control" name="customer_surname" id="surname" value="{{old('surname')}}" placeholder="Surname" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" placeholder="Email" required>
               </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Address</label>
-                <input type="text" class="form-control" name="address_line_1" id="address_line_1" aria-describedby="address_line_1" placeholder="Address" required>
+                <input type="text" class="form-control" name="address_line_1" id="address_line_1" value="{{old('address_line_1')}}" aria-describedby="address_line_1" placeholder="Address" required>
             </div>
             <div class="form-group">
                 <label for="address_line_2">Address line 2</label>
-                <input type="text" class="form-control" name="address_line_2" id="address_line_2" placeholder="">
+                <input type="text" class="form-control" name="address_line_2" id="address_line_2" value="{{old('address_line_2')}}" placeholder="">
             </div>
             <div class="form-group">
                 <label for="delivery_notes">Delivery notes</label>
-                <textarea class="form-control" name="delivery_notes" id="delivery_notes" aria-describedby="delivery_notes" placeholder="">
-
-                </textarea>
+                <textarea class="form-control" name="delivery_notes" id="delivery_notes" aria-describedby="delivery_notes">{{old('delivery_notes')}}</textarea>
             </div>
             <div class="form-group">
                 <label for="city">City</label>
-                <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
+                <input type="text" class="form-control" name="city" id="city" value="{{old('city')}}" placeholder="City" required>
             </div>
             <div class="my-2 d-flex justify-content-between">
             <div class="form-check">

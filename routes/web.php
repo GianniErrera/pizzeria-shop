@@ -30,7 +30,8 @@ Route::get('/orderlines/{orderline}', [OrderlineController::class, 'edit']);
 Route::post('/orderlines/{product_id}', [OrderlineController::class, 'store']);
 Route::patch('/orderlines/{orderline}', [OrderlineController::class, 'update']);
 Route::delete('/orderlines/{orderline}', [OrderlineController::class, 'destroy']);
-Route::get('/orders/confirm/{order}', [OrderController::class, 'show'])->name('order.confirm');
+Route::get('/orders/confirm/{order}', [OrderController::class, 'show'])->name('user.form');
+Route::post('/orders/confirm/{order}', [OrderController::class, 'store'])->name('order.confirm');
 Route::delete('/orders/{order}', [OrderController::class, 'destroy']);
 
 
