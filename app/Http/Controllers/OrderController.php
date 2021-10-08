@@ -9,6 +9,10 @@ use App\Models\OrderExtra;
 
 class OrderController extends Controller
 {
+    public function show(Order $order) {
+        return view('order.confirm', compact('order'));
+    }
+
     public function destroy(Order $order)
     {
         $orderlines = OrderLine::where('order_id', $order->id)->get();
@@ -28,5 +32,26 @@ class OrderController extends Controller
         request()->session()->forget('order_id');
 
         return redirect()->route('customers-view');
+    }
+
+    public function store(Request $request, Order $order) {
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:48',
+            'surname' => 'required|string|max:48',
+            'address_line_1' => 'required|string|max:50',
+            'address_line_2' => 'string|max:50',
+            'delivery_notes' => 'string|max:50',
+            'city' => 'required|string|max:20'
+        ]);
+
+        $order->fill([
+            'name' => request('name'),
+            'surname' => request('surname'),
+
+        ]);
+
+
+
     }
 }

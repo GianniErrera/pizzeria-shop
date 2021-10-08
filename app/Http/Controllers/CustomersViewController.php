@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\OrderLine;
+use App\Models\Order;
 
 class CustomersViewController extends Controller
 {
@@ -16,15 +17,10 @@ class CustomersViewController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $total = 0;
-        $orderlines = OrderLine::where('order_id', session('order_id'))->get();
-        foreach($orderlines as $orderline) {
-            $total += $orderline->totalPrice();
-        }
         return view('public.customers-view', [
             "products" => Product::all(),
             'orderlines' => OrderLine::where('order_id', session('order_id'))->get(),
-            'total_order_price' => $total
+            'order' => Order::find(session('order_id'))
         ]);
     }
 }

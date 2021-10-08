@@ -38,9 +38,8 @@ class OrderlineController extends Controller
      */
     public function store(Request $request, $product_id)
     {
-        $order_id = null; // if order has been created order_id value is stored in session, otherwise we create a new order and assign its value to this variable
+        if(!session('order_id') || !Order::where('id', session('order_id'))->exists()) { // check if there is not a order_id is saved in session or if a corresponding record doesn't exists
 
-        if(!session('order_id') || !Order::where('id', session('order_id'))) { // check if there is not a order_id is saved in session or if a corresponding record doesn't exists
             $order = new Order();
             $order->save();
             $order_id = $order->id;

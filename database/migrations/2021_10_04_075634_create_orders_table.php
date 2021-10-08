@@ -19,7 +19,8 @@ class CreateOrdersTable extends Migration
             $table->enum('order_status', ['cart', 'submitted order'])->default('cart');
             $table->float('total_price', 8, 2)->nullable();
             $table->timestamp('order_datetime')->nullable();
-            $table->string('customer', 100)->nullable();
+            $table->string('customer_name', 50)->nullable();
+            $table->string('customer_surname', 50)->nullable();
             $table->string('address_line1', 50)->nullable();
             $table->string('address_line2', 50)->nullable();
             $table->string('delivery_notes', 50)->nullable();

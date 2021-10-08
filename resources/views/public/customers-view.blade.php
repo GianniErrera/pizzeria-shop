@@ -28,7 +28,7 @@
                                     </a></h2>
                                 </div>
                                 <div class="ml-2 col">
-                                    <h2>€{{$product->price}}</h2>
+                                    <h2>€{{ $product->price }}</h2>
                                 </div>
                             </div>
                         @endif
@@ -92,7 +92,7 @@
                         <div class="d-flex justify-content-between">
                             <div class="col">total</div>
                             <div class="col"></div>
-                            <div class="col">€{{ (int)$orderline->quantity * (float)$orderline->product->price + $total_extras }}</div>
+                            <div class="col">€{{ $orderline->totalPrice() }}</div>
                         </div>
                     </div>
                     <div class="d-flex my-1">
@@ -120,23 +120,28 @@
                 <div class ="d-flex justify-content-between mt-2">
                     <div class="col">
                         <div class="d-flex">
-                        <form
-                            action="orders/{{session('order_id')}}"
-                            method="POST">
-                            @csrf
-                            @method("DELETE")
-                            <button class="btn btn-danger ml-1" onclick="return confirm('Are you sure?')">Clear shopping cart</button>
-                        </form>
-                        <div class="mx-1"></div>
-                        <button class="btn btn-primary">
-                        Place order
-                        </button>
+                            @if($order)
+                                <form
+                                    action="orders/{{session('order_id')}}"
+                                    method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button class="btn btn-danger ml-1" onclick="return confirm('Are you sure?')">Clear shopping cart</button>
+                                </form>
+                                <div class="mx-1"></div>
+
+                                    <a class="btn btn-primary"
+                                        href="{{route('order.confirm', ['order' => $order->id ])}}">
+                                        Place order
+                                    </a>
+                            @endif
                         </div>
                     </div>
                     <div class="col"></div>
                     <div class="col">
-                        €{{$total_order_price}}
-
+                        @if($order)
+                            €{{$order->totalPrice()}}
+                        @endif
                     </div>
                 </div>
             @endif
