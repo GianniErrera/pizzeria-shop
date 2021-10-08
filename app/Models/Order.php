@@ -14,7 +14,7 @@ class Order extends Model
                             'user_id',
                             'order_status',
                             'total_price',
-                            'order_datetime',
+                            'order_placed_at',
                             'customer_name',
                             'customer_surname',
                             'email',

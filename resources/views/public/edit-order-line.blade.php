@@ -28,16 +28,17 @@
         <form method="POST" action="/orderlines/{{$orderline->id}}">
             @csrf
             @method("PATCH")
-            <div class="d-flex justify-content-between" id="app">
+            <div class="d-flex justify-content-between my-2" id="app">
                 <div>{{ $orderline->product->name }} - €{{ $orderline->product->price }}</div>
                 <div>
                 <input name="quantity" value="{{ old('quantity') ? old('quantity') : $orderline->quantity }}"  type="number" min="1" max="100" class="number mx-4" type="text">
                 </div>
             </div>
+            <hr>
             <div>
                 @foreach ($extras as $extra)
                 <div class="row">
-                    <div>{{ $extra->name }}
+                    <div>{{ $extra->name }} - €{{ $extra->price }}
                     </div>
                     <input id="{{ $extra->name }}" name="extras[{{ $extra->id }}]"
                     {{ (old('extras[$extra->id]') || in_array($extra->id, $extraline)) ? "checked" : "" }} value="{{ $extra->id }}" type="checkbox">

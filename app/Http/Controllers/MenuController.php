@@ -16,7 +16,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('admin.admin-dashboard', [
+        return view('admin.dashboard', [
             'products' => Product::all(),
             'extras' => Extra::all()
         ]);
@@ -63,10 +63,6 @@ class MenuController extends Controller
             ]);
         Extra::create($validated);
         }
-
-
-
-
 
         return back();
 

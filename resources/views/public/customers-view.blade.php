@@ -28,12 +28,12 @@
                         @if($product->category == "1")
                             <div class="d-flex">
                                 <div class="col">
-                                    <h2><a class="text-xl text-decoration-none" href="{{route('product.show', ['product_id' => $product->id])}}">
+                                    <i><h2><a class="text-xl text-decoration-none" href="{{route('product.show', ['product_id' => $product->id])}}">
                                         {{ $product->name }}
-                                    </a></h2>
+                                    </a></h2></i>
                                 </div>
                                 <div class="ml-2 col">
-                                    <h2>€{{ $product->price }}</h2>
+                                    <i><h2>€{{ $product->price }}</h2></i>
                                 </div>
                             </div>
                         @endif
@@ -68,7 +68,7 @@
 
 
 
-            @foreach ($orderlines as $orderline)
+            @forelse ($orderlines as $orderline)
                 <div class="border">
                     <div class="d-flex justify-content-between">
                         @php
@@ -118,8 +118,17 @@
                     </div>
                 </div>
 
+            @empty
 
-            @endforeach
+                <div>
+                    <i>
+                        <h2>
+                            Cart is empty
+                        </h2>
+                    </i>
+                </div>
+
+            @endforelse
 
             @if($orderlines)
                 <div class ="d-flex justify-content-between mt-2">
@@ -136,9 +145,10 @@
                                 <div class="mx-1"></div>
 
                                     <a class="btn btn-primary"
-                                        href="{{route('user.form', ['order' => $order->id ])}}">
+                                        href="{{route('user.form', ['order' => $order->id ])}}"> <!-- user is prompted to fill in a form -->
                                         Place order
                                     </a>
+                                </div>
                             @endif
                         </div>
                     </div>

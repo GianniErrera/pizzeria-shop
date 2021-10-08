@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-            $table->enum('order_status', ['cart', 'submitted order'])->default('cart');
+            $table->unsignedTinyInteger('order_status')->default('0')->comment('0 => cart, 1 => order_placed');
             $table->float('total_price', 8, 2)->nullable();
             $table->timestamp('order_datetime')->nullable();
             $table->string('customer_name', 50)->nullable();

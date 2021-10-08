@@ -8,7 +8,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <style>
@@ -17,7 +16,7 @@
         }
     </style>
 
-    <title>Admin dashboard</title>
+    <title>Incoming orders</title>
   </head>
   <body>
 
@@ -55,8 +54,9 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
-      </nav>
-      <div class="container app">
+    </nav>
+
+    <div class="app container">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -66,84 +66,82 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="/menu">
-            @csrf
-            <div class="form-group">
-                <select name="category" class="custom-select custom-select-lg mb-2">
-                    <option value="1" {{ old('category') == "1" ? "selected" : "" }}>Pizza</option>
-                    <option value="2"  {{ old('category') == "2" ? "selected" : "" }}>Extra</option>
-                </select>
-            </div>
-            <div class="form-group">
-              <label for="name">Product name</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" aria-describedby="name" placeholder="Product name">
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="form-control" name="description" id="description" rows="3">{{old('description')}}</textarea>
-            </div>
-            <div class="form-group">
-              <label for="price">Price</label>
-              <input type="text" class="form-control" name="price" id="price" value="{{old('price')}}" placeholder="Price">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <input type="checkbox" name="vegetarian" value="1"  {{ old('vegetarian') == true ? "checked" : "" }} aria-label="Vegetarian">
-                    <span class="px-2">Vegetarian</span>
-                  </div>
+
+        @forelse($orders as $order)
+            <div class="border">
+
+                <div class="row">
+
+
+                        <div class="col">{{ $order->customer_name }} {{ $order->customer_surname }}</div>
+                        <div class="col">€{{ $order->total_price }}</div>
+                        <div class="col">{{ $order->email }}</div>
+
+
 
                 </div>
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <input type="checkbox" name="vegan" value="1" {{ old('vegan') == true ? "checked" : "" }} aria-label="Vegan">
-                    <span class="px-2">Vegan</span>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="allergens">Allergens list</label>
-                <textarea class="form-control" name="allergens" id="allergens" rows="3">{{old('allergens')}}</textarea>
+
+                <div class="row">
+
+
+                        <div class="col">{{ $order->address_line_1 }} {{ $order->address_line_2 }}</div>
+                        <div class="col">{{ $order->address_line_2 }}</div>
+                        <div class="col">{{ $order->city }}</div>
+
                 </div>
 
-            <div class="form-check">
+                <div class="row">
 
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
 
-          <br>
+                    <div class="col">{{ $order->city }} {{ $order->address_line_2 }}</div>
+                    <div class="col">{{ $order->postal_code ? $order->postal_code : "none" }}</div>
+                    <div class="col">{{ $order->delivery_notes ? $order->delivery_notes : "" }}</div>
 
-          <div class="container mb-4">
-              <div class="mb-2">
-                <h1 class="mb-2">Pizzas</h1>
-                @foreach ($products as $product)
-                    @if($product->category == "1")
-                        <div class="row flex justify-content-between">
-                            <div>{{ $product->name }}</div>
-                            <div class="row flex justify-content-between">
-                                <div> {{ $product->description ? $product->description : "no description" }}</div>
+                </div>
 
-                                    <div class="mx-2">€</div>
-                                    <div class="number">{{ $product->price }}</div>
+                <br>
 
-                            </div>
+
+
+                @foreach ($order->orderLines as $orderline)
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <div>{{ $orderline->product->name }} {{ $orderline->quantity }}</div>
                         </div>
-                    @endif
-                @endforeach
-              </div>
-              <div class="mb-2">
-                <h1 class="mb-2">Extras</h1>
-                @foreach ($extras as $extra)
-                    <div class="flex justify-content-between">
-                    {{ $extra->name }}  {{ $extra->description ?  "- " . $extra->description  : "" }} - €{{ $extra->price }}
                     </div>
+
+                    @foreach ($orderline->orderExtras as $orderExtra)
+                        <div>
+                            {{ $orderExtra->extra->name }}
+                        </div>
+                    @endforeach
                 @endforeach
-              </div>
-          </div>
+
+                <hr>
+
+                <div>
+                    <form
+                        method="POST"
+                        action="{{route('order.dispatched', ['order' => $order->id ])}}">
+                        @csrf
+                        <button class="btn btn-primary">Order dispatched</button>
+                    </form>
+                </div>
+
+            </div>
+        @empty
+
+        <div>
+            <h1>No incoming orders</h1>
+        </div>
+
+        @endforelse
+
+
     </div>
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

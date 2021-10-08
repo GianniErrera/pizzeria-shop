@@ -49,13 +49,13 @@ class OrderController extends Controller
         ]);
 
         $order->fill([
-            'order_status' => 'submitted order',
+            'order_status' => '1',
             'total_price' => $order->totalPrice(),
-            'order_datetime' => Carbon::now(),
+            'order_placed_at' => Carbon::now(),
             'customer_name' => request('customer_name'),
             'customer_surname' => request('customer_surname'),
             'email' => request('email') ? request('email') : '',
-            'address_line_1' => 'required|string|',
+            'address_line_1' => request('address_line_1'),
             'address_line_2' => request('address_line_2') ? request('address_line_2') : '',
             'delivery_notes' => request('delivery_notes') ? request('delivery_notes') : '',
             'city' => request('city'),

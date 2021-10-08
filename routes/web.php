@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomersViewController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
@@ -23,6 +23,8 @@ use App\Http\Controllers\ProductController;
 
 
 Route::get('/admin', [MenuController::class, 'index']);
+Route::get('/admin/incoming-orders', [AdminController::class, 'show'])->name('orders.incoming');
+Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])->name('order.dispatched');;
 Route::get('/', CustomersViewController::class)->name('customers-view');
 
 Route::get('/product/{product_id}', [ProductController::class, 'show'])->name('product.show');
