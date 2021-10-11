@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Extra;
+use App\Models\Category;
 
 
 class MenuController extends Controller
@@ -18,7 +19,8 @@ class MenuController extends Controller
     {
         return view('admin.dashboard', [
             'products' => Product::all(),
-            'extras' => Extra::all()
+            'extras' => Extra::all(),
+            'categories' => Category::all()->sortBy('sort_order')
         ]);
     }
 
@@ -40,22 +42,22 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        if(request('category') != "2") {
+        if(request('category_id') != "0") {
             $validated = $request->validate([
                 'name' => 'required|max:100|unique:products',
                 'price' => 'numeric|required',
-                'category' => 'required|integer',
+                'category_id' => 'required|integer',
                 'description' => 'nullable|string',
                 'vegetarian' => 'boolean',
                 'vegan' => 'boolean',
                 'allergens' => 'nullable|string'
             ]);
-        Product::create($validated);
+            Product::create($validated);
         } else {
             $validated = $request->validate([
                 'name' => 'required|max:100|unique:extras',
                 'price' => 'numeric|required',
-                'category' => 'required|integer',
+                'category_id' => 'required|integer',
                 'description' => 'nullable|string',
                 'vegetarian' => 'boolean',
                 'vegan' => 'boolean',

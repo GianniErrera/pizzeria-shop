@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <style>
@@ -16,7 +17,7 @@
         }
     </style>
 
-    <title>Incoming orders</title>
+    <title>Admin dashboard</title>
   </head>
   <body>
 
@@ -32,8 +33,11 @@
               <a class="nav-link" href="#">Menu <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Incoming orders</a>
+              <a class="nav-link" href="/admin/incoming-orders">Incoming orders</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/categories">Products categories</a>
+              </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
@@ -55,94 +59,11 @@
           </form>
         </div>
     </nav>
-
     <div id="app" class="container">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
-        @forelse($orders as $order)
-            <div class="border">
-
-                <div class="row">
-
-
-                        <div class="col">{{ $order->customer_name }} {{ $order->customer_surname }}</div>
-                        <div class="col">€{{ $order->total_price }}</div>
-                        <div class="col">{{ $order->email }}</div>
-
-
-
-                </div>
-
-                <div class="row">
-
-
-                        <div class="col">{{ $order->address_line_1 }} {{ $order->address_line_2 }}</div>
-                        <div class="col">{{ $order->address_line_2 }}</div>
-                        <div class="col">{{ $order->city }}</div>
-
-                </div>
-
-                <div class="row">
-
-
-                    <div class="col">{{ $order->city }} {{ $order->address_line_2 }}</div>
-                    <div class="col">{{ $order->postal_code ? $order->postal_code : "none" }}</div>
-                    <div class="col">{{ $order->delivery_notes ? $order->delivery_notes : "" }}</div>
-
-                </div>
-
-                <br>
-
-
-
-                @foreach ($order->orderLines as $orderline)
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <div>{{ $orderline->product->name }} {{ $orderline->quantity }}</div>
-                        </div>
-                    </div>
-
-                    @foreach ($orderline->orderExtras as $orderExtra)
-                        <div>
-                            {{ $orderExtra->extra->name }}
-                        </div>
-                    @endforeach
-                @endforeach
-
-                <hr>
-
-                <div>
-                    <form
-                        method="POST"
-                        action="{{route('order.dispatched', ['order' => $order->id ])}}">
-                        @csrf
-                        <button class="btn btn-primary">Order dispatched</button>
-                    </form>
-                </div>
-
-            </div>
-        @empty
-
-        <div>
-            <h1>No incoming orders</h1>
-            <products-categories categories='categories' />
-        </div>
-
-        @endforelse
-
+        @yield('content')
 
     </div>
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

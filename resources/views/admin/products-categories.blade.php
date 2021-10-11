@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <style>
@@ -16,7 +17,7 @@
         }
     </style>
 
-    <title>Incoming orders</title>
+    <title>Admin dashboard</title>
   </head>
   <body>
 
@@ -32,7 +33,7 @@
               <a class="nav-link" href="#">Menu <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Incoming orders</a>
+              <a class="nav-link" href="/admin/incoming-orders">Incoming orders</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,8 +56,12 @@
           </form>
         </div>
     </nav>
-
     <div id="app" class="container">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -66,83 +71,58 @@
                 </ul>
             </div>
         @endif
+        <form method="POST"
+            action="{{route('product_category.new')}}">
+            @csrf
+            <div class="row">
+                <div class="form-group">
 
-        @forelse($orders as $order)
-            <div class="border">
-
-                <div class="row">
-
-
-                        <div class="col">{{ $order->customer_name }} {{ $order->customer_surname }}</div>
-                        <div class="col">€{{ $order->total_price }}</div>
-                        <div class="col">{{ $order->email }}</div>
-
-
+                    <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" aria-describedby="name" placeholder="Category name">
 
                 </div>
-
-                <div class="row">
-
-
-                        <div class="col">{{ $order->address_line_1 }} {{ $order->address_line_2 }}</div>
-                        <div class="col">{{ $order->address_line_2 }}</div>
-                        <div class="col">{{ $order->city }}</div>
-
+                <div class="ml-2">
+                    <button class="btn btn-primary">Add category</button>
                 </div>
+            </div>
+        </form>
 
-                <div class="row">
+        <hr>
 
+        @forelse ($categories as $category)
 
-                    <div class="col">{{ $order->city }} {{ $order->address_line_2 }}</div>
-                    <div class="col">{{ $order->postal_code ? $order->postal_code : "none" }}</div>
-                    <div class="col">{{ $order->delivery_notes ? $order->delivery_notes : "" }}</div>
-
-                </div>
-
-                <br>
-
-
-
-                @foreach ($order->orderLines as $orderline)
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <div>{{ $orderline->product->name }} {{ $orderline->quantity }}</div>
-                        </div>
-                    </div>
-
-                    @foreach ($orderline->orderExtras as $orderExtra)
-                        <div>
-                            {{ $orderExtra->extra->name }}
-                        </div>
-                    @endforeach
-                @endforeach
-
-                <hr>
-
-                <div>
+            <div class="d-flex">
+                <div class="col">{{ ucfirst($category->name) }}</div>
+                <div class="col">
+                    @if(!$loop->first)
                     <form
                         method="POST"
-                        action="{{route('order.dispatched', ['order' => $order->id ])}}">
+                        action="{{route('categories.sort', ['category' => $category->id])}}">
+                        <input type="hidden" name="direction" value="up">
                         @csrf
-                        <button class="btn btn-primary">Order dispatched</button>
-                    </form>
+                        <button class="btn btn-primary border">↑</button></form>
+                    @endif
                 </div>
-
+                <div class="col">
+                    @if(!$loop->last)
+                    <form
+                        method="POST"
+                        action="{{route('categories.sort', ['category' => $category->id])}}">
+                        <input type="hidden" name="direction" value="down">
+                        @csrf
+                        <button class="btn btn-primary border">↓</button>
+                    </form>
+                    @endif
+                </div>
+                <div class="col"></div>
             </div>
         @empty
-
-        <div>
-            <h1>No incoming orders</h1>
-            <products-categories categories='categories' />
-        </div>
-
+        {{"No category found."}}
         @endforelse
+
+        {{-- <products-categories :categories="{{$categories}}" /> --}}
 
 
     </div>
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

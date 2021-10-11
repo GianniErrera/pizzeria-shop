@@ -25,7 +25,7 @@
             <h1 class="mb-2">Pizzas</h1>
                 <div class="mx-2">
                     @foreach ($products as $product)
-                        @if($product->category == "1")
+                        @if($product->category_id == "1")
                             <div class="d-flex">
                                 <div class="col">
                                     <i><h2><a class="text-xl text-decoration-none" href="{{route('product.show', ['product_id' => $product->id])}}">

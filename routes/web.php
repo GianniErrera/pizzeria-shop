@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomersViewController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
@@ -23,6 +24,9 @@ use App\Http\Controllers\ProductController;
 
 
 Route::get('/admin', [MenuController::class, 'index']);
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories');
+Route::post('/admin/categories', [CategoryController::class, 'store'])->name('product_category.new');
+Route::post('/admin/categories/sort/{category}', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/admin/incoming-orders', [AdminController::class, 'show'])->name('orders.incoming');
 Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])->name('order.dispatched');;
 Route::get('/', CustomersViewController::class)->name('customers-view');

@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'category', 'description', 'vegetarian', 'vegan', 'allergens'];
+    protected $fillable = ['name', 'price', 'category_id', 'description', 'vegetarian', 'vegan', 'allergens'];
 
     protected $casts = [
         'vegetarian' => 'boolean',
