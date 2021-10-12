@@ -1,5 +1,7 @@
 require('./bootstrap');
 
+require('livewire-sortable');
+
 
 window.Vue = require('vue').default;
 

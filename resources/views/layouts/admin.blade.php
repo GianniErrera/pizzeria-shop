@@ -11,6 +11,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    @livewireStyles
+
     <style>
         .number {
             width: 3em;
@@ -64,6 +66,8 @@
         @yield('content')
 
     </div>
+
+    @livewireScripts
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

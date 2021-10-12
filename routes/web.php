@@ -23,7 +23,7 @@ use App\Http\Controllers\ProductController;
 
 
 
-Route::get('/admin', [MenuController::class, 'index']);
+Route::get('/admin', [MenuController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories');
 Route::post('/admin/categories', [CategoryController::class, 'store'])->name('product_category.new');
 Route::post('/admin/categories/sort/{category}', [CategoryController::class, 'sort'])->name('categories.sort');

@@ -89,7 +89,7 @@
                     <div>
                         @foreach ($orderline->orderExtras as $extraLine)
                         <div class="d-flex justify-content-between">
-                            <div class="col">{{ $orderline->quantity }} {{ $extraLine->extra->name }}</div>
+                            <div class="col">-- {{ $orderline->quantity }} {{ $extraLine->extra->name }}</div>
                             <div class="col">€{{ $extraLine->extra->price }}</div>
                             <div class="col">€{{$extraLine->extra->price * $orderline->quantity}} </div>
                         </div>
