@@ -8,9 +8,13 @@
             class="form-group"
             placeholder="Name">
         <button class="btn btn-primary">Add Category</button>
-        <div class="alert alert-danger">
-        @error('name') <span class="error">{{ $message }}</span> @enderror
-        </div>
+
+        @error('name')
+            <div class="alert alert-danger">
+                <span class="error">{{ $message }}</span>
+            </div>
+        @enderror
+
     </form>
 
     <ul wire:sortable="updateCategoriesOrder">

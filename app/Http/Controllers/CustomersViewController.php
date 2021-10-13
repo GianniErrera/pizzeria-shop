@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\OrderLine;
 use App\Models\Order;
+use App\Models\Extra;
 
 class CustomersViewController extends Controller
 {
@@ -20,6 +21,7 @@ class CustomersViewController extends Controller
         return view('public.customers-view', [
             "products" => Product::all(),
             'orderlines' => OrderLine::where('order_id', session('order_id'))->get(),
+            'extras' => Extra::all(),
             'order' => Order::find(session('order_id'))
         ]);
     }

@@ -37,15 +37,12 @@
                 <div class="row">
                     <div>{{ $extra->name }} - €{{ $extra->price }}
                     </div>
-                    <input id="{{ $extra->name }}" name="extras[{{ $extra->id }}]" {{ old("extras[$extra->id]") == true ? "checked" : "" }} value="{{ $extra->id }}" type="checkbox">
+                    <input id="{{ $extra->name }}" name="extras.{{ $extra->id }}" {{ old("extras[$extra->id]") == true ? "checked" : "" }} value="{{ $extra->id }}" type="checkbox">
                 </div>
                 @endforeach
             </div>
             <button type="submit">Add to cart</button>
         </form>
-
-
-
 
     </div>
 
