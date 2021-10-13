@@ -10,11 +10,13 @@
         <div>
             <h1 class="mb-2">Pizzas</h1>
             <div class="mx-2">
+                <!-- Products list -->
                 @foreach ($products as $product)
                     @if($product->category_id == "1")
                         <div class="d-flex m-2">
                             <!-- Large modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-lg-{{$product->id}}">Order</button>
+                            <!-- End modal -->
 
                             <div id="{{$product->id}}" class="modal fade modal-lg-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
@@ -36,28 +38,9 @@
                         </div>
                     @endif
                 @endforeach
+                <!-- End products list -->
             </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-                </div>
-            </div>
         </div>
 
 
@@ -65,7 +48,7 @@
         <hr>
 
 
-
+        <!-- Orderlines list -->
         @forelse ($orderlines as $orderline)
             <div class="border">
                 <div class="d-flex justify-content-between">
@@ -98,6 +81,7 @@
                         <div class="col">€ {{ $orderline->totalPrice() }}</div>
                     </div>
                 </div>
+                <!-- Buttons -->
                 <div class="d-flex my-1">
 
                         <form action="/orderlines/{{$orderline->id}}">
@@ -114,6 +98,7 @@
                         </form>
 
                 </div>
+                <!-- End buttons -->
             </div>
 
         @empty
@@ -127,6 +112,10 @@
             </div>
 
         @endforelse
+
+        <!-- End orderlines list -->
+
+        <!-- Total prices -->
 
         @if($orderlines)
             <div class ="d-flex justify-content-between mt-2">
@@ -157,6 +146,7 @@
                 </div>
             </div>
         @endif
+        <!-- End total prices -->
 
 
     </div>
