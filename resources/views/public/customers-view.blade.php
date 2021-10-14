@@ -53,7 +53,9 @@
             <div class="border">
                 <div class="d-flex justify-content-between">
 
-                    <div class="col">{{ $orderline->quantity}} {{ $orderline->product->name }}</div>
+                    <div class="col">
+                        <h4>{{ $orderline->quantity}} {{ $orderline->product->name }}</h4>
+                    </div>
                     <div class="col"> € {{ $orderline->product->price }}</div>
                     <div class="col"> € {{ (int)$orderline->quantity * (float)$orderline->product->price }}
                     </div>
@@ -67,10 +69,13 @@
                         <div class="col">€ {{$extraLine->extra->price * $orderline->quantity}} </div>
                     </div>
                     @endforeach
-                    <div class="d-flex justify-content-between">
+                    <hr>
+                    <div class="d-flex justify-content-between mt-2">
                         <div class="col">total</div>
                         <div class="col"></div>
-                        <div class="col">€ {{ $orderline->totalPrice() }}</div>
+                        <div class="col">
+                            <h5>€ {{ $orderline->totalPrice() }}</h5>
+                        </div>
                     </div>
                 </div>
                 <!-- Buttons -->
