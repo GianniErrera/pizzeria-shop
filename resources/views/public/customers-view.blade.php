@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <!-- Buttons -->
-                <div class="d-flex my-1">
+                <div class="d-flex my-2">
 
                         <form action="/orderlines/{{$orderline->id}}">
                             <button class="btn btn-primary">Modify order</button>

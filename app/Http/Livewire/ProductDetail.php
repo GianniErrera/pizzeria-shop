@@ -19,6 +19,8 @@ class ProductDetail extends Component
     public $extras;
     public $totalExtrasPrice = 0;
 
+    protected $listeners = ["refresh" => '$refresh'];
+
     protected $rules = [
         'quantity' => 'required|min:1|max:100'
     ];
@@ -80,7 +82,6 @@ class ProductDetail extends Component
             ]);
 
         }
-
 
     }
 
