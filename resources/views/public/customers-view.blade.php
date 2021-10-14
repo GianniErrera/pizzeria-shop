@@ -15,10 +15,10 @@
                     @if($product->category_id == "1")
                         <div class="d-flex m-2">
                             <!-- Large modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-lg-{{$product->id}}">Order</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg-{{$product->id}}">Order</button>
                             <!-- End modal -->
 
-                            <div id="{{$product->id}}" class="modal fade modal-lg-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div id="modal-lg-{{$product->id}}" class="modal fade modal-lg-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="m-4">
@@ -52,14 +52,6 @@
         @forelse ($orderlines as $orderline)
             <div class="border">
                 <div class="d-flex justify-content-between">
-                    @php
-                        $total_extras = 0;
-                    @endphp
-                    @foreach ($orderline->orderExtras as $extraLine)
-                        @php
-                        $total_extras += $extraLine->extra->price * $orderline->quantity;
-                        @endphp
-                    @endforeach
 
                     <div class="col">{{ $orderline->quantity}} {{ $orderline->product->name }}</div>
                     <div class="col"> € {{ $orderline->product->price }}</div>
@@ -118,7 +110,7 @@
         <!-- Total prices -->
 
         @if($orderlines)
-            <div class ="d-flex justify-content-between mt-2">
+            <div class ="d-flex justify-content-between my-2">
                 <div class="col">
                     <div class="row">
                         @if($order)
@@ -141,7 +133,7 @@
                 <div class="col"></div>
                 <div class="col">
                     @if($order)
-                        €{{$order->totalPrice()}}
+                        <h3>€{{$order->totalPrice()}}</h3>
                     @endif
                 </div>
             </div>

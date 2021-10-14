@@ -7,7 +7,7 @@
         </div>
 
         <div class="modal-body">
-            <div class="m-4">
+            <div class="m-2">
                 <div class="container" id="{{ $product->id }}">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -46,7 +46,7 @@
                                     <div class="col">
                                         <h4>{{ $extra->name }} - €{{ $extra->price }}</h4>
                                     </div>
-                                    <div class="col ml-2 align-middle">
+                                    <div class="col align-middle">
                                         <h4>
                                             <input wire:model="productExtras.{{$extra->id}}" id="{{ $extra->name }}" name="extras[{{ $extra->id }}]" {{ old("extras[$extra->id]") == true ? "checked" : "" }} value="{{ $extra->id }}" type="checkbox">
                                         </h4>
@@ -68,15 +68,15 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">Add to cart</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add to cart</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add to cart</button>
-        </div>
+
     </form>
 
 </div>
