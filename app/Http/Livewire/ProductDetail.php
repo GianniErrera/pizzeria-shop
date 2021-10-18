@@ -85,7 +85,7 @@ class ProductDetail extends Component
         }
 
         $this->emit('product-added-to-cart', $this->product->id);
-        $this->emitSelf('refresh');
+        redirect()->route('customers-view');
 
     }
 

@@ -41,7 +41,7 @@
                         </div>
                         <hr>
                         <div class="mb-4 ml-4">
-                            @foreach ($extras as $extra)
+                            @forelse ($extras as $extra)
                                 <div class="row">
                                     <div class="col">
                                         <h4>{{ $extra->name }} - €{{ $extra->price }}</h4>
@@ -53,7 +53,8 @@
                                     </div>
                                     <div></div>
                                 </div>
-                            @endforeach
+                            @empty
+                            @endforelse
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <div>
