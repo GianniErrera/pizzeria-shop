@@ -27,7 +27,10 @@ use App\Models\Category;
 
 Route::get('/menu', function () { return view('template/menu', ['products' => Product::where('category_id', "1")->get()]); });
 Route::get('/index', function () {
-    return view('template/index');
+    return view('template/index', [
+        'pizzas' => Product::where('category_id', "1")->get(),
+        'categories' => Category::orderBy('sort_order')->get()
+    ]);
 });
 Route::get('/services', function () { return view('template/services'); });
 Route::get('/blog', function () { return view('template/blog'); });
