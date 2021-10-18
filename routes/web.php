@@ -9,6 +9,10 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderlineController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
+use App\Models\Category;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +25,18 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-
+Route::get('/menu', function () { return view('template/menu', ['products' => Product::where('category_id', "1")->get()]); });
+Route::get('/index', function () {
+    return view('template/index', [
+        'pizzas' => Product::where('category_id', "1")->get(),
+        'categories' => Category::orderBy('sort_order')->get(),
+        'products' => Product::all()
+    ]);
+});
+Route::get('/services', function () { return view('template/services'); });
+Route::get('/blog', function () { return view('template/blog'); });
+Route::get('/about', function () { return view('template/about'); });
+Route::get('/contact', function () { return view('template/contact'); });
 
 Route::get('/admin', [MenuController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories');

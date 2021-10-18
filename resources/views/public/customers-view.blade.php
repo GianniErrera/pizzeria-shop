@@ -84,7 +84,9 @@
                         <form action="/orderlines/{{$orderline->id}}">
                             <button class="btn btn-primary">Modify order</button>
                         </form>
-                        <div class="mx-1"></div>
+                        <!-- Empry div used for spacing two buttons -->
+                        <div class="mx-1">
+                        </div>
 
                         <form
                             action="orderlines/{{$orderline->id}}"
@@ -126,11 +128,13 @@
                                 @method("DELETE")
                                 <button class="btn btn-danger ml-1" onclick="return confirm('Are you sure?')">Clear shopping cart</button>
                             </form>
-                            <div class="mx-1"></div>
-                                <a class="btn btn-primary"
-                                    href="{{route('user.form', ['order' => $order->id ])}}"> <!-- user is prompted to fill in a form -->
-                                    Place order
-                                </a>
+                            <!-- Empry div used for spacing two buttons -->
+                            <div class="mx-1">
+                            </div>
+                            <a class="btn btn-primary"
+                                href="{{route('user.form', ['order' => $order->id ])}}"> <!-- user is prompted to fill in a form -->
+                                Place order
+                            </a>
                             </div>
                         @endif
 
@@ -149,4 +153,9 @@
     </div>
 
 
+
 @endsection
+
+
+
+

@@ -53,6 +53,7 @@ class ProductDetail extends Component
     }
 
     public function addToCart() {
+
         $this->validate();
 
         if(!session('order_id') || !Order::where('id', session('order_id'))->exists()) { // check if there is not a order_id is saved in session or if a corresponding record doesn't exists
@@ -82,6 +83,9 @@ class ProductDetail extends Component
             ]);
 
         }
+
+        $this->emit('product-added-to-cart', $this->product->id);
+        $this->emitSelf('refresh');
 
     }
 
