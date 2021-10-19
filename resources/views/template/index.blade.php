@@ -213,26 +213,10 @@
     	<div class="container-wrap">
     		<div class="row no-gutters d-flex">
                 @forelse($pizzas as $pizza)
-                    @if($loop->index % 6 < 3)
-                        <div class="col-lg-4 d-flex ftco-animate">
-                            <div class="services-wrap d-flex">
-                                <a href="#" class="img" style="background-image: url(images/pizza-{{$loop->index + 1}}.jpg);"></a>
-                                <div class="text p-4">
-                                    <h3>{{ $pizza->name }}</h3>
-                                    <p>{{ $pizza->description }} </p>
-                                    <p class="price"><span>€{{ $pizza->price }}</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                @empty
-                @endforelse
-
-                @forelse($pizzas as $pizza)
-                    @if($loop->index % 6 >= 3)
                     <div class="col-lg-4 d-flex ftco-animate">
                         <div class="services-wrap d-flex">
-                            <a href="#" class="img order-lg-last" style="background-image: url(images/pizza-{{$loop->index + 1}}.jpg);"></a>
+                            <!-- big screens layout display 3 pizzas in a row, and each rows has image aligned to left or right alternatively to form a checkboard pattern -->
+                             <a href="#" class="img {{ $loop->index  % 6 <= 2  ? ' order-lg-last' : '' }}" style="background-image: url(images/pizza-{{$loop->index + 1}}.jpg);"></a>
                             <div class="text p-4">
                                 <h3>{{$pizza->name}}</h3>
                                 <p>{{ $pizza->description }} </p>
@@ -240,7 +224,6 @@
                             </div>
                         </div>
                     </div>
-                    @endif
                 @empty
                 @endforelse
     		</div>
@@ -260,7 +243,7 @@
             $number_pizzas_per_row = intdiv(count($pizzas), 2)
             @endphp
         	<div class="col-md-6">
-                @forelse($pizzas as $izza)
+                @forelse($pizzas as $pizza)
                 @if($loop->index <= $number_pizzas_per_row)
         		<div class="pricing-entry d-flex ftco-animate">
         			<div class="img" style="background-image: url(images/pizza-{{ $loop->index + 1}}.jpg);"></div>
