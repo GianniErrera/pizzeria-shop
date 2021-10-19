@@ -396,148 +396,36 @@
                             </div>
                         </div>
 		            <div class="col-md-12 d-flex align-items-center">
-                    @forelse ($categories as $category)
+                        <div class="tab-content ftco-animate" id="v-pills-tabContent">
 
-                    @empty
+                            @forelse ($categories as $category)
+                                <div class="tab-pane fade show active" style="overflow-x:hidden" id="v-pills-{{$loop->index + 1}}" role="tabpanel" aria-labelledby="v-pills-{{$loop->index + 1}}-tab">
+                                    <div class="row">
+                                        @forelse ($category->products as $product)
+                                            <div class="col-md-4 text-center">
+                                                <div class="menu-wrap">
+                                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-1.jpg);"></a>
+                                                    <div class="text">
+                                                        <h3><a href="#">{{ $product->name }}</a></h3>
+                                                        <p>{{ $product->description }}</p>
+                                                        <p class="price"><span>€{{$product->price}}</span></p>
+                                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @empty
 
-                    @endforelse
-		            <div class="tab-content ftco-animate" id="v-pills-tabContent">
-		                <div class="tab-pane fade show active" style="overflow-x:hidden" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
-		              	<div class="row">
-		              		<div class="col-md-4 text-center">
-		              			<div class="menu-wrap">
-		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-1.jpg);"></a>
-		              				<div class="text">
-		              					<h3><a href="#">Italian Pizza</a></h3>
-		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-		              				</div>
-		              			</div>
-		              		</div>
-		              		<div class="col-md-4 text-center">
-		              			<div class="menu-wrap">
-		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-2.jpg);"></a>
-		              				<div class="text">
-		              					<h3><a href="#">Itallian Pizza</a></h3>
-		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-		              				</div>
-		              			</div>
-		              		</div>
-		              		<div class="col-md-4 text-center">
-		              			<div class="menu-wrap">
-		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-3.jpg);"></a>
-		              				<div class="text">
-		              					<h3><a href="#">Italian Pizza</a></h3>
-		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-		              				</div>
-		              			</div>
-		              		</div>
-                              <div class="col-md-4 text-center">
-                                <div class="menu-wrap">
-                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-3.jpg);"></a>
-                                    <div class="text">
-                                        <h3><a href="#">Italian Pizza</a></h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                        <p class="price"><span>$2.90</span></p>
-                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+                                        @endforelse
+
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="menu-wrap">
-                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-1.jpg);"></a>
-                                    <div class="text">
-                                        <h3><a href="#">Italian Pizza</a></h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                        <p class="price"><span>$2.90</span></p>
-                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="menu-wrap">
-                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-2.jpg);"></a>
-                                    <div class="text">
-                                        <h3><a href="#">Itallian Pizza</a></h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                        <p class="price"><span>$2.90</span></p>
-                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="menu-wrap">
-                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-3.jpg);"></a>
-                                    <div class="text">
-                                        <h3><a href="#">Italian Pizza</a></h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                        <p class="price"><span>$2.90</span></p>
-                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                              <div class="menu-wrap">
-                                  <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-3.jpg);"></a>
-                                  <div class="text">
-                                      <h3><a href="#">Italian Pizza</a></h3>
-                                      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                      <p class="price"><span>$2.90</span></p>
-                                      <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                                  </div>
-                              </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="menu-wrap">
-                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-1.jpg);"></a>
-                                    <div class="text">
-                                        <h3><a href="#">Italian Pizza</a></h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                        <p class="price"><span>$2.90</span></p>
-                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                              <div class="menu-wrap">
-                                  <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-2.jpg);"></a>
-                                  <div class="text">
-                                      <h3><a href="#">Itallian Pizza</a></h3>
-                                      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                      <p class="price"><span>$2.90</span></p>
-                                      <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                                  </div>
-                              </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="menu-wrap">
-                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-3.jpg);"></a>
-                                    <div class="text">
-                                        <h3><a href="#">Italian Pizza</a></h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                        <p class="price"><span>$2.90</span></p>
-                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="menu-wrap">
-                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-3.jpg);"></a>
-                                    <div class="text">
-                                        <h3><a href="#">Italian Pizza</a></h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                                        <p class="price"><span>$2.90</span></p>
-                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                                    </div>
-                                </div>
-                            </div>
+
+                            @empty
+
+                            @endforelse
+
                         </div>
-		            </div>
+                    </div>
 		        </div>
 		    </div>
     	</div>
