@@ -5,11 +5,13 @@
         </div>
     @endif
     <div>
-        <h1 class="mb-2">Pizzas</h1>
-        <div class="mx-2">
-            <!-- Products list -->
-            @foreach ($products as $product)
-                @if($product->category_id == "1")
+        @forelse($categories as $category)
+            <div class="mb-2">
+
+                <h1 class="mb-2">{{ucfirst($category->name)}}</h1>
+                <!-- Products list -->
+                @forelse ($category->products as $product)
+
                     <div class="d-flex m-2">
                         <!-- Large modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg-{{$product->id}}">Order</button>
@@ -33,19 +35,25 @@
                             <i><h2>€ {{ $product->price }}</h2></i>
                         </div>
                     </div>
-                @endif
-            @endforeach
-            <!-- End products list -->
+                    <hr>
+                @empty
+                <div class="mb-3"><i><h3>No products found in this category</h3></i></div>
+                <hr>
+                @endforelse
+                <!-- End products list -->
+        @empty
+        <div class="mb-3"><i><h3>No categories found</h3></i></div>
+        @endforelse
         </div>
     </div>
-
-
-    <hr>
 
 
     <!-- Orderlines list -->
     @forelse ($orderlines as $orderline)
         <div class="border">
+            <div class="d-fles">
+                <h4>{{ucfirst($orderline->product->category->name)}}</h4>
+            </div>
             <div class="d-flex justify-content-between">
 
                 <div class="col">

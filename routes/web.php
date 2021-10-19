@@ -43,7 +43,7 @@ Route::post('/admin/categories', [CategoryController::class, 'store'])->name('pr
 Route::post('/admin/categories/sort/{category}', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/admin/incoming-orders', [AdminController::class, 'show'])->name('orders.incoming');
 Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])->name('order.dispatched');;
-Route::get('/', function() { return view('public.customers-view'); })->name('customers-view');
+Route::get('/', function() { return view('public.customers-view');})->name('customers-view');
 
 Route::get('/product/{product_id}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/orderlines/{orderline}', [OrderlineController::class, 'edit']);

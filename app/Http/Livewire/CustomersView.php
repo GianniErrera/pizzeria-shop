@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Orderline;
@@ -15,11 +16,13 @@ class CustomersView extends Component
 
     protected $listeners = ["refresh-customers-view" => '$refresh'];
 
+    //main component properties
     public $products;
     public $orderlines;
     public $extras;
     public $order;
     public $categories;
+    //modal properties
     public $product;
     public $quantity = 1;
     public $productExtras = [];
@@ -36,7 +39,7 @@ class CustomersView extends Component
         $this->orderlines = OrderLine::where('order_id', session('order_id'))->get();
         $this->extras = Extra::all();
         $this->order = Order::find(session('order_id'));
-
+        $this->categories = Category::all()->sortBy('order_id');
     }
 
     public function add() {
@@ -104,7 +107,8 @@ class CustomersView extends Component
             "products" => $this->products,
             'orderlines' => $this->orderlines,
             'extras' => $this->extras,
-            'order' => $this->order
+            'order' => $this->order,
+            'categories' => $this->categories
             ]);
     }
 
