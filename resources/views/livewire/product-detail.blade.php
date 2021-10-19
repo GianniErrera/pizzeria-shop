@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <hr>
-                        @if($product->category->hasExtra) // some categories don't need any extra options and we don't want to show these checkboxes when ordering them
+                        @if($product->category->hasExtras) <!-- some categories don't need any extra options and we don't want to show these checkboxes when ordering them -->
                             <div class="mb-4 ml-4">
                                 @forelse ($extras as $extra)
                                     <div class="row">

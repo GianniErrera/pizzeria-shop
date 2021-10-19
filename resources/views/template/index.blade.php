@@ -380,55 +380,58 @@
                         <div class="col-md-12 nav-link-wrap mb-5">
                             <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 @forelse($categories as $category)
-                                <a class="nav-link {{$loop->index == 0 ? 'active' : '' }} "
-                                    id="v-pills-{{$loop->index + 1}}-tab"
-                                    data-toggle="pill"
-                                    href="#v-pills-{{$loop->index + 1}}"
-                                    role="tab"
-                                    aria-controls="v-pills-{{$loop->index + 1}}"
-                                    aria-selected="{{$loop->index == 0 ? 'true' : 'false' }}">
+                                    <a class="nav-link {{$loop->first ? 'active' : '' }} "
+                                        id="v-pills-{{$loop->index + 1}}-tab"
+                                        data-toggle="pill"
+                                        href="#v-pills-{{$loop->index + 1}}"
+                                        role="tab"
+                                        aria-controls="v-pills-{{$loop->index + 1}}"
+                                        aria-selected="{{$loop->index == 0 ? 'true' : 'false' }}">
 
-                                    {{ucfirst($category->name)}}
-                                </a>
-
+                                        {{ucfirst($category->name)}}
+                                    </a>
                                 @empty
                                 @endforelse
                             </div>
                         </div>
-		            <div class="col-md-12 d-flex align-items-center">
-                        <div class="tab-content ftco-animate" id="v-pills-tabContent">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <div class="tab-content ftco-animate" id="v-pills-tabContent">
 
-                            @forelse ($categories as $category)
-                                <div class="tab-pane fade show active" style="overflow-x:hidden" id="v-pills-{{$loop->index + 1}}" role="tabpanel" aria-labelledby="v-pills-{{$loop->index + 1}}-tab">
-                                    <div class="row">
-                                        @forelse ($category->products as $product)
-                                            <div class="col-md-4 text-center">
-                                                <div class="menu-wrap">
-                                                    <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-1.jpg);"></a>
-                                                    <div class="text">
-                                                        <h3><a href="#">{{ $product->name }}</a></h3>
-                                                        <p>{{ $product->description }}</p>
-                                                        <p class="price"><span>€{{$product->price}}</span></p>
-                                                        <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+                                @forelse ($categories as $category)
+                                    <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" style="overflow-x:hidden" id="v-pills-{{$loop->index + 1}}" role="tabpanel" aria-labelledby="v-pills-{{$loop->index + 1}}-tab">
+                                        <div class="row">
+                                            @forelse ($category->products as $product)
+                                                <div class="col-md-4 text-center">
+                                                    <div class="menu-wrap">
+                                                        <a href="#" class="menu-img img mb-4" style="background-image: url(images/{{$category->name}}-{{$product->id}}.jpg);"></a>
+                                                        <div class="text">
+                                                            <h3><a href="#">{{ $product->name }}</a></h3>
+                                                            <p>{{ $product->description }}</p>
+                                                            <p class="price"><span>€{{$product->price}}</span></p>
+                                                            <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @empty
+                                            @empty
+                                                <div class="p-4">
+                                                    <h5>No products in this category</h5>
+                                                </div>
+                                            @endforelse
 
-                                        @endforelse
-
+                                        </div>
                                     </div>
-                                </div>
 
-                            @empty
+                                @empty
 
-                            @endforelse
+                                @endforelse
 
+                            </div>
                         </div>
                     </div>
 		        </div>
 		    </div>
     	</div>
+
     </section>
 
 
