@@ -216,7 +216,10 @@
                     <div class="col-lg-4 d-flex ftco-animate">
                         <div class="services-wrap d-flex">
                             <!-- big screens layout display 3 pizzas in a row, and each rows has image aligned to left or right alternatively to form a checkboard pattern -->
-                             <a href="#" class="img {{ $loop->index  % 6 <= 2  ? ' order-lg-last' : '' }}" style="background-image: url(images/pizza-{{$loop->index + 1}}.jpg);"></a>
+                             <a href="#"
+                                class="img {{ $loop->index  % 6 <= 2  ? ' order-lg-last' : '' }}"
+                                style="background-image: url(images/pizza-{{$loop->index + 1}}.jpg);"
+                                ></a>
                             <div class="text p-4">
                                 <h3>{{$pizza->name}}</h3>
                                 <p>{{ $pizza->description }} </p>
@@ -244,40 +247,51 @@
             @endphp
         	<div class="col-md-6">
                 @forelse($pizzas as $pizza)
-                @if($loop->index <= $number_pizzas_per_row)
-        		<div class="pricing-entry d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/pizza-{{ $loop->index + 1}}.jpg);"></div>
-        			<div class="desc pl-3">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>{{ $pizza->name }}</span></h3>
-                            <span class="price">€{{ $pizza->price }}</span>
+                    @if($loop->index <= $number_pizzas_per_row)
+                        <div class="pricing-entry d-flex ftco-animate">
+                            <div class="img"
+                                @if($pizza->image)
+                                    style="background-image: url({{$pizza->image}});"
+                                @else
+                                    style="background-image: url(https://picsum.photos/1000/900);"
+                                @endif
+                            ></div>
+                            <div class="desc pl-3">
+                                <div class="d-flex text align-items-center">
+                                    <h3><span>{{ $pizza->name }}</span></h3>
+                                    <span class="price">€{{ $pizza->price }}</span>
+                                </div>
+                                <div class="d-block">
+                                    <p>{{ $pizza->description }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-block">
-                            <p>{{ $pizza->description }}</p>
-                        </div>
-        			</div>
-        		</div>
-                @endif
+                    @endif
                 @empty
                 @endforelse
         	</div>
 
             <div class="col-md-6">
                 @forelse($pizzas as $pizza)
-                @if($loop->index > $number_pizzas_per_row)
-        		<div class="pricing-entry d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/pizza-{{ $loop->index + 1}}.jpg);"></div>
-        			<div class="desc pl-3">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>{{ $pizza->name }}</span></h3>
-                            <span class="price">€{{ $pizza->price }}</span>
+                    @if($loop->index > $number_pizzas_per_row)
+                        <div class="pricing-entry d-flex ftco-animate">
+                            <div class="img"
+                                @if($pizza->image)
+                                style="background-image: url({{$pizza->image}});"
+                                @else style="background-image: url(https://picsum.photos/60/60);"
+                                @endif
+                            ></div>
+                            <div class="desc pl-3">
+                                <div class="d-flex text align-items-center">
+                                    <h3><span>{{ $pizza->name }}</span></h3>
+                                    <span class="price">€{{ $pizza->price }}</span>
+                                </div>
+                                <div class="d-block">
+                                    <p>{{ $pizza->description }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-block">
-                            <p>{{ $pizza->description }}</p>
-                        </div>
-        			</div>
-        		</div>
-                @endif
+                    @endif
                 @empty
                 @endforelse
         	</div>
@@ -403,7 +417,12 @@
                                             @forelse ($category->products as $product)
                                                 <div class="col-md-4 text-center">
                                                     <div class="menu-wrap">
-                                                        <a href="#" class="menu-img img mb-4" style="background-image: url(images/{{$category->name}}-{{$product->id}}.jpg);"></a>
+                                                        <a href="#" class="menu-img img mb-4"
+                                                        @if($product->image)
+                                                        style="background-image: url({{$product->image}});"
+                                                        @else style="background-image: url(https://picsum.photos/200/300);"
+                                                        @endif
+                                                        ></a>
                                                         <div class="text">
                                                             <h3><a href="#">{{ $product->name }}</a></h3>
                                                             <p>{{ $product->description }}</p>
