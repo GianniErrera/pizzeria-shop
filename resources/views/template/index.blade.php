@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    @livewireStyles
+
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
 
@@ -43,6 +48,7 @@
 	          <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="about" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+              <li class="nav-item {{ session('order_id') ? "active" : "" }} "><a href="cart" class="nav-link">Cart</a></li>
 	        </ul>
 	      </div>
 		  </div>
@@ -564,6 +570,7 @@
     </footer>
 
 
+  @livewireScripts
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
