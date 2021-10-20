@@ -224,7 +224,7 @@
                             <!-- big screens layout display 3 pizzas in a row, and each rows has image aligned to left or right alternatively to form a checkboard pattern -->
                              <a href="#"
                                 class="img {{ $loop->index  % 6 <= 2  ? ' order-lg-last' : '' }}"
-                                style="background-image: url(images/pizza-{{$loop->index + 1}}.jpg);"
+                                style="background-image: url({{asset('storage/' . $pizza->image)}});"
                                 ></a>
                             <div class="text p-4">
                                 <h3>{{$pizza->name}}</h3>
@@ -251,13 +251,53 @@
             @php
             $number_pizzas_per_row = intdiv(count($pizzas), 2)
             @endphp
-        	<div class="col-md-6">
+
                 @forelse($pizzas as $pizza)
-                    @if($loop->index <= $number_pizzas_per_row)
+                    @if($loop->first || $loop->index == $number_pizzas_per_row + 1) <!-- this line checks if element is the first in its column so div may be opened -->
+                        <div class="col-md-6"> <!-- <- this opens the div tag -->
+                            <div class="pricing-entry d-flex ftco-animate">
+                                <div class="img"
+                                    @if($pizza->image)
+                                        style="background-image: url({{asset('storage/' . $pizza->image)}});"
+                                    @else
+                                        style="background-image: url(https://picsum.photos/1000/900);"
+                                    @endif
+                                ></div>
+                                <div class="desc pl-3">
+                                    <div class="d-flex text align-items-center">
+                                        <h3><span>{{ $pizza->name }}</span></h3>
+                                        <span class="price">€{{ $pizza->price }}</span>
+                                    </div>
+                                    <div class="d-block">
+                                        <p>{{ $pizza->description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    @elseif($loop->last || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the last in its column so div may be closed -->
+                            <div class="pricing-entry d-flex ftco-animate">
+                                <div class="img"
+                                    @if($pizza->image)
+                                        style="background-image: url({{asset('storage/' . $pizza->image)}});"
+                                    @else
+                                        style="background-image: url(https://picsum.photos/1000/900);"
+                                    @endif
+                                ></div>
+                                <div class="desc pl-3">
+                                    <div class="d-flex text align-items-center">
+                                        <h3><span>{{ $pizza->name }}</span></h3>
+                                        <span class="price">€{{ $pizza->price }}</span>
+                                    </div>
+                                    <div class="d-block">
+                                        <p>{{ $pizza->description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  <!-- <- this closes the div tag -->
+                    @else($loop->last || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the last in its column so div may be closed -->
                         <div class="pricing-entry d-flex ftco-animate">
                             <div class="img"
                                 @if($pizza->image)
-                                    style="background-image: url({{$pizza->image}});"
+                                    style="background-image: url({{asset('storage/' . $pizza->image)}});"
                                 @else
                                     style="background-image: url(https://picsum.photos/1000/900);"
                                 @endif
@@ -277,30 +317,7 @@
                 @endforelse
         	</div>
 
-            <div class="col-md-6">
-                @forelse($pizzas as $pizza)
-                    @if($loop->index > $number_pizzas_per_row)
-                        <div class="pricing-entry d-flex ftco-animate">
-                            <div class="img"
-                                @if($pizza->image)
-                                style="background-image: url({{$pizza->image}});"
-                                @else style="background-image: url(https://picsum.photos/60/60);"
-                                @endif
-                            ></div>
-                            <div class="desc pl-3">
-                                <div class="d-flex text align-items-center">
-                                    <h3><span>{{ $pizza->name }}</span></h3>
-                                    <span class="price">€{{ $pizza->price }}</span>
-                                </div>
-                                <div class="d-block">
-                                    <p>{{ $pizza->description }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                @empty
-                @endforelse
-        	</div>
+
         </div>
     	</div>
     </section>
@@ -341,8 +358,8 @@
     </section>
 
 
-		<section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
+    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
       <div class="container">
         <div class="row justify-content-center">
         	<div class="col-md-10">
@@ -425,7 +442,7 @@
                                                     <div class="menu-wrap">
                                                         <a href="#" class="menu-img img mb-4"
                                                         @if($product->image)
-                                                        style="background-image: url({{$product->image}});"
+                                                        style="background-image: url({{asset('storage/' . $product->image)}});"
                                                         @else style="background-image: url(https://picsum.photos/200/300);"
                                                         @endif
                                                         ></a>

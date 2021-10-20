@@ -12,7 +12,7 @@
             </ul>
         </div>
     @endif
-    <form method="POST" action="/menu">
+    <form method="POST" action="/menu" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <select name="category_id" class="custom-select custom-select-lg mb-2">
@@ -33,6 +33,12 @@
         <div class="form-group">
             <label for="price">Price</label>
             <input type="text" class="form-control" name="price" id="price" value="{{old('price')}}" placeholder="Price">
+        </div>
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="image" class="form-label">Product image</label>
+                <input class="form-control" type="file" name="image" id="image">
+              </div>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">

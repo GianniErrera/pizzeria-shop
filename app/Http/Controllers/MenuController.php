@@ -50,9 +50,10 @@ class MenuController extends Controller
                 'description' => 'nullable|string',
                 'vegetarian' => 'boolean',
                 'vegan' => 'boolean',
-                'allergens' => 'nullable|string'
+                'allergens' => 'nullable|string',
+                'image' => 'image|nullable'
             ]);
-            Product::create($validated);
+            $product = Product::create($validated);
         } else {
             $validated = $request->validate([
                 'name' => 'required|max:100|unique:extras',
@@ -61,9 +62,17 @@ class MenuController extends Controller
                 'description' => 'nullable|string',
                 'vegetarian' => 'boolean',
                 'vegan' => 'boolean',
-                'allergens' => 'nullable|string'
+                'allergens' => 'nullable|string',
+                'image' => 'image|nullable'
             ]);
-        Extra::create($validated);
+            Extra::create($validated);
+        }
+
+        if(request('image')) {
+            $extension = $request->file('image')->extension();
+            $path = $request->image->storePubliclyAs('images', $product->category->name . '-' . $product->id .  "." . $extension, 'public');
+            $product->image = $path;
+            $product->save();
         }
 
         return back();

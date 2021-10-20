@@ -7,9 +7,14 @@
             value="{{old('name')}}"
             class="form-group"
             placeholder="Name">
-        <div class="input-group-prepend">
+        <div class="input-group-prepend mb-2">
             <div class="input-group-text">
-            <input type="checkbox" name="hasExtras" value="1" {{ old('hasExtras') == true ? "checked" : "" }} aria-label="hasExtras">
+            <input type="checkbox"
+                name="hasExtras"
+                value="1"
+                {{ old('hasExtras') == true ? "checked" : "" }}
+                aria-label="hasExtras"
+                >
             <span class="px-2">Has extras</span>
             </div>
         </div>
