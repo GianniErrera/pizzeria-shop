@@ -12,11 +12,9 @@ class ProductController extends Controller
         dd(request());
     }
 
-    public function show($id) {
-
-        return view('public.product-detail', [
-            'product' => Product::where('id', $id)->first(),
-            'extras' => Extra::all()
+    public function show(Product $product) {
+        return view('template.product-detail', [
+            'product' => $product
         ]);
     }
 

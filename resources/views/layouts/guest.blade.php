@@ -19,7 +19,7 @@
         }
     </style>
 
-    <title>Admin dashboard</title>
+    <title>Guest view</title>
   </head>
   <body>
 

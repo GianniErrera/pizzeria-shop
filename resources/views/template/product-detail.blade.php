@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
 @section('content')
-    {{$product->name}}
+    @livewire('add-to-cart', ['product' => $product])
 @endsection
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8cee2b70e0568f9fd84917afc2bedbd6",
+    "content-hash": "52446da3c576a2d1e393b32a1fe88d17",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,56 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.3"
             },
             "time": "2021-03-11T06:42:03+00:00"
+        },
+        {
+            "name": "bastinald/laravel-livewire-modals",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bastinald/laravel-livewire-modals.git",
+                "reference": "fd53779095ff15d201a2adabdfbde4d101b13d59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bastinald/laravel-livewire-modals/zipball/fd53779095ff15d201a2adabdfbde4d101b13d59",
+                "reference": "fd53779095ff15d201a2adabdfbde4d101b13d59",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "livewire/livewire": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bastinald\\LaravelLivewireModals\\Providers\\LaravelLivewireModalsProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bastinald\\LaravelLivewireModals\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Dion",
+                    "email": "bastinald@icloud.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dynamic Laravel Livewire Bootstrap modals.",
+            "homepage": "https://github.com/bastinald/laravel-livewire-modals",
+            "support": {
+                "issues": "https://github.com/bastinald/laravel-livewire-modals/issues",
+                "source": "https://github.com/bastinald/laravel-livewire-modals/tree/3.0.0"
+            },
+            "time": "2021-09-10T00:08:07+00:00"
         },
         {
             "name": "brick/math",
@@ -2085,6 +2135,64 @@
             "time": "2021-09-25T08:23:19+00:00"
         },
         {
+            "name": "livewire-ui/modal",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire-ui/modal.git",
+                "reference": "0fe7036574868758f328e2266ecf27d3b30b7555"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire-ui/modal/zipball/0fe7036574868758f328e2266ecf27d3b30b7555",
+                "reference": "0fe7036574868758f328e2266ecf27d3b30b7555",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": "^2.0",
+                "php": "^7.4|^8.0",
+                "spatie/laravel-package-tools": "^1.9"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.15",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LivewireUI\\Modal\\LivewireModalServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LivewireUI\\Modal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Philo Hermans",
+                    "email": "me@philohermans.com"
+                }
+            ],
+            "description": "Laravel Livewire UI component",
+            "keywords": [
+                "laravel",
+                "livewire",
+                "modal"
+            ],
+            "support": {
+                "issues": "https://github.com/livewire-ui/modal/issues",
+                "source": "https://github.com/livewire-ui/modal/tree/1.0.1"
+            },
+            "time": "2021-08-31T13:21:20+00:00"
+        },
+        {
             "name": "livewire/livewire",
             "version": "v2.6.7",
             "source": {
@@ -3340,6 +3448,66 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "f710fe196c126fb9e0aee67eb5af49ad8f13f528"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/f710fe196c126fb9e0aee67eb5af49ad8f13f528",
+                "reference": "f710fe196c126fb9e0aee67eb5af49ad8f13f528",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^7.0|^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^9.3",
+                "spatie/test-time": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src",
+                    "Spatie\\LaravelPackageTools\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.9.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-09-21T13:06:51+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

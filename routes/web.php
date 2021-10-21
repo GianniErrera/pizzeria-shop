@@ -11,6 +11,7 @@ use App\Http\Controllers\OrderlineController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Extra;
 
 
 
@@ -42,10 +43,11 @@ Route::get('/admin/categories', [CategoryController::class, 'index'])->name('cat
 Route::post('/admin/categories', [CategoryController::class, 'store'])->name('product_category.new');
 Route::post('/admin/categories/sort/{category}', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/admin/incoming-orders', [AdminController::class, 'show'])->name('orders.incoming');
-Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])->name('order.dispatched');;
+Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])->name('order.dispatched');
 Route::get('/', function() { return view('public.customers-view');})->name('customers-view');
 
-Route::get('/product/{product_id}', [ProductController::class, 'show'])->name('product.show');
+
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/orderlines/{orderline}', [OrderlineController::class, 'edit']);
 Route::post('/orderlines/{product_id}', [OrderlineController::class, 'store']);
 Route::patch('/orderlines/{orderline}', [OrderlineController::class, 'update']);
