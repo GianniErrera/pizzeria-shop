@@ -28,11 +28,8 @@ use App\Models\Extra;
 
 Route::get('/menu', function () { return view('template/menu', ['products' => Product::where('category_id', "1")->get()]); });
 Route::get('/index', function () {
-    return view('template/index', [
-        'pizzas' => Product::where('category_id', "1")->get(),
-        'categories' => Category::orderBy('sort_order')->get()
-    ]);
-});
+    return view('template/index');
+})->name('customers-view');
 Route::get('/services', function () { return view('template/services'); });
 Route::get('/blog', function () { return view('template/blog'); });
 Route::get('/about', function () { return view('template/about'); });
@@ -44,7 +41,7 @@ Route::post('/admin/categories', [CategoryController::class, 'store'])->name('pr
 Route::post('/admin/categories/sort/{category}', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/admin/incoming-orders', [AdminController::class, 'show'])->name('orders.incoming');
 Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])->name('order.dispatched');
-Route::get('/', function() { return view('public.customers-view');})->name('customers-view');
+Route::get('/', function() { return view('public.customers-view');});
 
 
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');

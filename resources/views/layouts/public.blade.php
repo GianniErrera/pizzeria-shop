@@ -15,6 +15,12 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <style>
+        .number {
+            width: 3em;
+        }
+    </style>
+
 
     @livewireStyles
 
@@ -53,7 +59,7 @@
 	          <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="about" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
-              <li class="nav-item {{ session('order_id') ? "active" : "" }} "><a href="cart" class="nav-link">Cart</a></li>
+              <li class="nav-item {{ session('order_id') ? "active" : "" }} "><a href="#cart" class="nav-link">Cart</a></li>
 	        </ul>
 	      </div>
 		  </div>

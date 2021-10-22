@@ -22,6 +22,7 @@ class CustomersView extends Component
     public $extras;
     public $order;
     public $categories;
+    public $pizzas;
 
     protected $rules = [
         'quantity' => 'required|min:1|max:100'
@@ -33,6 +34,7 @@ class CustomersView extends Component
         $this->extras = Extra::all();
         $this->order = Order::find(session('order_id'));
         $this->categories = Category::all()->sortBy('order_id');
+        $this->pizzas = Product::where('category_id', 1)->get();
     }
 
 
@@ -43,7 +45,8 @@ class CustomersView extends Component
             'orderlines' => $this->orderlines,
             'extras' => $this->extras,
             'order' => $this->order,
-            'categories' => $this->categories
+            'categories' => $this->categories,
+            'pizzas' => $this->pizzas
             ]);
     }
 

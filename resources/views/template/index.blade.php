@@ -1,5 +1,5 @@
 @extends('layouts.public')
 
 @section('content')
-    <x-restaurant-frontend :pizzas="$pizzas" :categories="$categories" />
+    @livewire('customers-view')
 @endsection

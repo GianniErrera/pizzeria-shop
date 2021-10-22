@@ -81,7 +81,7 @@ class AddToCart extends Component
             ]);
         }
 
-        $this->emit('product-added-to-cart', $this->product->id);
+        return redirect()->to(route('customers-view')."\//#cart");
 
     }
 

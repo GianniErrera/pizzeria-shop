@@ -1,9 +1,6 @@
 <div class="container" id="{{ $product->id }}">
     <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{ ucfirst($product->category->name) }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
     </div>
 
     <div class="modal-body">
@@ -72,7 +69,7 @@
                         </div>
                     @endif
                     <div class="modal-footer">
-                        <button type="button" id="close-modal-{{$product->id}}" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="{{route("customers-view")}}" class="btn btn-secondary" data-dismiss="modal">Back to homepage</a>
                         <button type="submit" class="btn btn-primary">Add to cart</button>
                     </div>
                 </form>
