@@ -151,6 +151,6 @@ class OrderlineController extends Controller
         OrderExtra::where('order_line_id', $orderline->id)->delete();
         $orderline->delete();
 
-        return redirect()->route('customers-view');
+        return redirect()->route('customers-view'.'#cart');
     }
 }

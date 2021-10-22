@@ -425,7 +425,7 @@
     <div class="container-fluid " id="cart">
         <!-- Orderlines list -->
         @forelse ($orderlines as $orderline)
-            <div class="border p-2" style="border-width:">
+            <div class="border p-2" style="border-width:thick">
                 <div class="d-fles">
                     <h4>{{ucfirst($orderline->product->category->name)}}</h4>
                 </div>
