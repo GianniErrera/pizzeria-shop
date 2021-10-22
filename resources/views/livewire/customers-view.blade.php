@@ -499,28 +499,9 @@
         @if($orderlines)
             <div class ="d-flex justify-content-between my-2">
                 <div class="col">
-                    <div class="row">
-                        @if($order)
-                            <form
-                                action="orders/{{session('order_id')}}"
-                                method="POST">
-                                @csrf
-                                @method("DELETE")
-                                <button class="btn btn-danger ml-1" onclick="return confirm('Are you sure?')">Clear shopping cart</button>
-                            </form>
-                            <!-- Empry div used for spacing two buttons -->
-                            <div class="mx-1">
-                            </div>
-                            <a class="btn btn-primary"
-                                href="{{route('user.form', ['order' => $order->id ])}}"> <!-- user is prompted to fill in a form -->
-                                Place order
-                            </a>
-                        @endif
-                    </div>
-
-
                 </div>
-                <div class="col"></div>
+                <div class="col">
+                </div>
                 <div class="col">
                     @if($order)
                         <h3>€{{$order->totalPrice()}}</h3>
@@ -529,6 +510,26 @@
             </div>
         @endif
         <!-- End total prices -->
+        <div class="d-flex justify-content-end my-3 mr-4">
+            <div class="row">
+                @if($order)
+                    <form
+                        action="orders/{{session('order_id')}}"
+                        method="POST">
+                        @csrf
+                        @method("DELETE")
+                        <button class="btn btn-danger ml-1" onclick="return confirm('Are you sure?')">Clear shopping cart</button>
+                    </form>
+                    <!-- Empry div used for spacing two buttons -->
+                    <div class="mx-1">
+                    </div>
+                    <a class="btn btn-primary"
+                        href="{{route('user.form', ['order' => $order->id ])}}"> <!-- user is prompted to fill in a form -->
+                        Place order
+                    </a>
+                @endif
+            </div>
+        </div>
     </div>
 
     </section>
