@@ -54,7 +54,7 @@ class AddToCart extends Component
 
         $this->validate();
 
-        if(!session('order_id') || !Order::where('id', session('order_id'))->exists()) { // check if there is not a order_id is saved in session or if a corresponding record doesn't exists
+        if(!session('order_id') || !Order::where('id', session('order_id'))->exists()) { // check if there is not a order_id saved in session or if a corresponding record doesn't exists
 
             $order = new Order();
             $order->save();
