@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Extra;
+use App\Models\Order;
 
 
 
@@ -34,6 +35,12 @@ Route::get('/services', function () { return view('template/services'); });
 Route::get('/blog', function () { return view('template/blog'); });
 Route::get('/about', function () { return view('template/about'); });
 Route::get('/contact', function () { return view('template/contact'); });
+
+Route::get('/mailable', function () {
+    $order = Order::all()->where('order_status', 1)->sortByDesc('created_at')->first();
+
+    return new \App\Mail\OrderPlaced($order);
+});
 
 Route::get('/admin', [MenuController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories');

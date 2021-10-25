@@ -28,6 +28,17 @@ class OrderLine extends Model
         return $total;
     }
 
+    public function extrasPrice() {
+        $total = 0;
+        $orderExtras = OrderExtra::where('order_line_id', $this->id)->get();
+
+        foreach($orderExtras as $orderExtra) {
+            $total += $orderExtra->extra->price * $this->quantity;
+        }
+
+        return $total;
+    }
+
     public function order() {
         return $this->belongsTo(Order::class);
     }
