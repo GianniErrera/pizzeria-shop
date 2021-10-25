@@ -45,7 +45,10 @@
                     <label class="form-check-label" for="remember_me">Remember details</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <div>
+                        <a href="{{route("customers-view")."#cart"}}" class="btn btn-secondary">Back to shopping cart</a>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

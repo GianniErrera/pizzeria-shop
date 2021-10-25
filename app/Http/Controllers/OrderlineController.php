@@ -94,9 +94,9 @@ class OrderlineController extends Controller
      */
     public function edit(OrderLine $orderline)
     {
-        return view('public.edit-order-line', [
+        return view('public.modify-orderline', [
             'orderline' => $orderline,
-            "extraline" => OrderExtra::where('order_line_id', $orderline->id)->pluck('extra_id')->toArray(),
+            "extralines" => OrderExtra::where('order_line_id', $orderline->id)->pluck('extra_id')->toArray(),
             'extras' => Extra::all()
         ]);
     }
@@ -151,6 +151,6 @@ class OrderlineController extends Controller
         OrderExtra::where('order_line_id', $orderline->id)->delete();
         $orderline->delete();
 
-        return redirect()->route('customers-view'.'#cart');
+        return redirect()->route('customers-view').'#cart';
     }
 }

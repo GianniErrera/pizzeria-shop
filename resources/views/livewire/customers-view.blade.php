@@ -178,6 +178,7 @@
                       </div>
                   </div>
               @empty
+              <h2>No pizzas found</h2>
               @endforelse
           </div>
       </div>
@@ -258,6 +259,7 @@
                       </div>
                   @endif
               @empty
+              <h2>No pizzas found</h2>
               @endforelse
           </div>
 
@@ -496,9 +498,10 @@
 
         <!-- Total prices -->
 
-        @if($orderlines)
+        @if($orderlines->count())
             <div class ="d-flex justify-content-between my-2">
                 <div class="col">
+                    <h1>Total</h1>
                 </div>
                 <div class="col">
                 </div>

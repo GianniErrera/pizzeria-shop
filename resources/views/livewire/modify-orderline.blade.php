@@ -15,7 +15,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="POST" wire:submit.prevent="addToCart">
+                <form method="POST" wire:submit.prevent="updateOrderline">
                     @csrf
                     <div class="d-flex justify-content-between my-2">
                         <div class="text-capitalize"><h2>{{ $product->name }} - €{{ $product->price }}</h2></div>
@@ -39,14 +39,18 @@
                     <hr>
                     @if($product->category->hasExtras) <!-- some categories don't need any extra options and we don't want to show these checkboxes when ordering them -->
                         <div class="mb-4 ml-4">
-                            @forelse ($extras as $extra)
-                                <div class="row">
+                            @forelse ($extras as $extra)                                 <div class="row">
                                     <div class="col">
-                                        <h4>{{ $extra->name }} - €{{ $extra->price }}</h4>
+                                        <h4>{{ $extra->name }} - €{{ $extra->price }} </h4>
                                     </div>
                                     <div class="col align-middle">
                                         <h4>
-                                            <input wire:model="productExtras.{{$extra->id}}" id="{{ $extra->name }}" name="extras[{{ $extra->id }}]" {{ old("extras[$extra->id]") == true ? "checked" : "" }} value="{{ $extra->id }}" type="checkbox">
+                                            <input wire:model="checkedExtras.{{$extra->id}}"
+                                                id="{{ $extra->name }}"
+                                                name="checkedExtras[{{ $extra->id }}]"
+                                                {{in_array($extra->id, $extralines)}} ? 'checked' : '' }}
+                                                value="{{ $extra->id }}"
+                                                type="checkbox">
                                         </h4>
                                     </div>
                                     <div></div>
@@ -69,7 +73,7 @@
                         </div>
                     @endif
                     <div class="modal-footer">
-                        <a href="{{route("customers-view".('#cart'))}}" class="btn btn-secondary" data-dismiss="modal">Back to homepage</a>
+                        <a href="{{route("customers-view").'#cart'}}" class="btn btn-secondary" data-dismiss="modal">Back to homepage</a>
                         <button type="submit" class="btn btn-primary">Modify order</button>
                     </div>
                 </form>
@@ -77,7 +81,8 @@
         </div>
     </div>
 
-</form>
+</div>
+
 
 </div>
 

@@ -1,9 +1,13 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
+Thank you for your order!
 
-@component('mail::button', ['url' => ''])
+You're paying €{{ $order->totalPrice() }}.
+
+Your order will be delivered at {{$order->address_line_1}} - {{$order->city}}
+
+@component('mail::button', ['url' => "http://pizzeria-shop.test/index"])
 Button Text
 @endcomponent
 
