@@ -28,7 +28,7 @@ use App\Mail\OrderReceived;
 |
 */
 
-Route::get('/menu', function () { return view('template/menu', ['products' => Product::where('category_id', "1")->get()]); });
+Route::get('/menu', function () { return view('template/menu', ['pizzas' => Product::where('category_id', "1")->get(), 'categories' => Category::orderBy('sort_order')->get()]); });
 Route::get('/index', function () {
     return view('template/index');
 })->name('customers-view');

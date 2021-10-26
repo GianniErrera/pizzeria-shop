@@ -264,7 +264,7 @@
           </div>
 
 
-      </div>
+        </div>
       </div>
   </section>
 
@@ -422,6 +422,8 @@
               </div>
           </div>
       </div>
+
+  </section>
 
   </section class="ftco-section">
     <div class="container-fluid " id="cart">
