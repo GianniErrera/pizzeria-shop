@@ -8,7 +8,7 @@ use App\Models\OrderLine;
 use App\Models\OrderExtra;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\OrderPlaced;
+use App\Mail\OrderReceived;
 
 class OrderController extends Controller
 {
@@ -67,7 +67,7 @@ class OrderController extends Controller
         $order->save();
         request()->session()->forget('order_id');
 
-        Mail::to(request('email'))->send( new \App\Mail\OrderPlaced($order));
+        Mail::to(request('email'))->send( new OrderReceived($order));
 
         return redirect()->route('customers-view')->with('status', 'Order placed successfully. Thank you!');
 

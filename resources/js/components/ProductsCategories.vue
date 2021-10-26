@@ -20,7 +20,7 @@
 
         data() {
             return {
-                caegories: categories,
+                categories: categories,
                 category_name: ""
             }
         }

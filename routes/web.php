@@ -41,7 +41,7 @@ Route::get('/mailable', function () {
     $order = Order::all()->where('order_status', 1)->sortByDesc('created_at')->first();
 
     return new OrderReceived($order);
-});
+})->name('mailable');
 
 Route::get('/admin', [MenuController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories');
