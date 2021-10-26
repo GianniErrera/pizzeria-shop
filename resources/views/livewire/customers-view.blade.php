@@ -513,6 +513,8 @@
             </div>
         @endif
         <!-- End total prices -->
+
+
         <div class="d-flex justify-content-end my-3 mr-4">
             <div class="row">
                 @if($order)

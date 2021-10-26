@@ -13,6 +13,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Extra;
 use App\Models\Order;
+use App\Mail\OrderReceived;
 
 
 
@@ -39,7 +40,7 @@ Route::get('/contact', function () { return view('template/contact'); });
 Route::get('/mailable', function () {
     $order = Order::all()->where('order_status', 1)->sortByDesc('created_at')->first();
 
-    return new \App\Mail\OrderPlaced($order);
+    return new OrderReceived($order);
 });
 
 Route::get('/admin', [MenuController::class, 'index'])->name('admin.dashboard');
