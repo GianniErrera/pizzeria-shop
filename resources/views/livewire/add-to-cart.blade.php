@@ -53,21 +53,24 @@
                                 </div>
                             @empty
                             @endforelse
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h4>
-                                        Total € {{ $product->price + $totalExtrasPrice}}
-                                    </h4>
-                                </div>
-                                <div>
-                                    <h4>
-                                        qty {{ $quantity }} - € {{ ( $product->price + $totalExtrasPrice ) * $quantity }}
-                                    </h4>
-                                </div>
-                            </div>
                         </div>
                     @endif
+
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>
+                                Total € {{ $product->price + $totalExtrasPrice}}
+                            </h4>
+                        </div>
+                        <div>
+                            <h4>
+                                qty {{ $quantity }} - € {{ ( $product->price + $totalExtrasPrice ) * $quantity }}
+                            </h4>
+                        </div>
+                    </div>
+
+
                     <div class="modal-footer">
                         <a href="{{route("customers-view")}}" class="btn btn-secondary" data-dismiss="modal">Back to homepage</a>
                         <button type="submit" class="btn btn-primary">Add to cart</button>

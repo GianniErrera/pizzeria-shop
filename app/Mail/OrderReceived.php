@@ -32,6 +32,6 @@ class OrderReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.confirmation');
+        return $this->markdown('emails.confirmation');
     }
 }
