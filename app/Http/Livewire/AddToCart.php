@@ -71,14 +71,15 @@ class AddToCart extends Component
             'quantity' => $this->quantity
         ]);
 
+        if($this->productExtras != []) {
+            foreach($this->productExtras as $extra_id) {
 
-        foreach($this->productExtras as $extra_id) {
-
-            OrderExtra::create([
-                'order_line_id' => $this->orderline->id,
-                'extra_id' => $extra_id,
-                'quantity' => $this->quantity
-            ]);
+                OrderExtra::create([
+                    'order_line_id' => $this->orderline->id,
+                    'extra_id' => $extra_id,
+                    'quantity' => $this->quantity
+                ]);
+            }
         }
 
         return redirect()->to(route('customers-view')."#cart");
