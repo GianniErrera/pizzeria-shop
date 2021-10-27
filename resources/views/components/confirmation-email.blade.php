@@ -14,7 +14,7 @@
         <div class="m-4">
             <div>
                 <h2
-                style="color:#fac564">Thank you for shopping from us, {{ $order->customer_name }} {{ $order->customer_surname }}!</h2>
+                style="color:#fac564">Thank you for choosing us, {{ $order->customer_name }} {{ $order->customer_surname }}!</h2>
             </div>
         </div>
         <br>
