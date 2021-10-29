@@ -170,9 +170,11 @@
                               class="img {{ $loop->index  % 6 <= 2  ? ' order-lg-last' : '' }}"
                               style="background-image: url({{asset('storage/' . $pizza->image)}});"
                               ></a>
-                          <div class="text p-4">
-                              <h3>{{$pizza->name}}</h3>
-                              <p>{{ $pizza->description }} </p>
+                          <div class="text p-4" style="height:10rem; overflow:hidden;">
+                              <div>
+                                <h3>{{$pizza->name}}</h3>
+                                <p>{{ $pizza->description }} </p>
+                              </div>
                               <p class="price"><span>€{{ $pizza->price }}</span> <a href="{{route("product.show", ['product' => $pizza])}}" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
                           </div>
                       </div>

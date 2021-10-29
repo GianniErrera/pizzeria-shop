@@ -1,6 +1,8 @@
 require('./bootstrap');
 require('@popperjs/core');
 
+require('livewire-sortable')
+
 window.Vue = require('vue').default;
 
 Vue.component('customers-view', require('./components/CustomersView.vue').default);
