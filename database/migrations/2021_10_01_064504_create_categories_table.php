@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name', 50)->unique();
             $table->unsignedTinyInteger('sub-category')->nullable();
             $table->unsignedBigInteger('sort_order')->nullable();
+            $table->boolean('hasExtras')->default(false);
             $table->timestamps();
         });
     }
