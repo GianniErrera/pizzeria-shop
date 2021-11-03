@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use Livewire\Component;
 use App\Models\Product;
-use App\Models\Orderline;
+use App\Models\OrderLine;
 use App\Models\Extra;
 use App\Models\Order;
 use App\Models\OrderExtra;
