@@ -17,7 +17,8 @@ class CategorySeeder extends Seeder
         Category::truncate();
 
         Category::create([
-            'name' => 'pizza'
+            'name' => 'pizza',
+            'hasExtras' => 1
         ]);
         Category::create([
             'name' => 'bevande'
