@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'name' => 'pizza',
-            'hasExtras' => 1
+            'hasExtras' => true
         ]);
         Category::create([
             'name' => 'bevande'
