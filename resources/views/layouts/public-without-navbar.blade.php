@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
     <style>
         .number {
@@ -26,24 +26,24 @@
 
     @livewireStyles
 
-    <link rel="stylesheet" href={{asset("css/open-iconic-bootstrap.min.css")}}>
-    <link rel="stylesheet" href={{asset("css/animate.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/open-iconic-bootstrap.min.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/animate.css")}}>
 
-    <link rel="stylesheet" href={{asset("css/owl.carousel.min.css")}}>
-    <link rel="stylesheet" href={{asset("css/owl.theme.default.min.css")}}>
-    <link rel="stylesheet" href={{asset("css/magnific-popup.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/owl.carousel.min.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/owl.theme.default.min.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/magnific-popup.css")}}>
 
-    <link rel="stylesheet" href={{asset("css/aos.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/aos.css")}}>
 
-    <link rel="stylesheet" href={{asset("css/ionicons.min.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/ionicons.min.css")}}>
 
-    <link rel="stylesheet" href={{asset("css/bootstrap-datepicker.css")}}>
-    <link rel="stylesheet" href={{asset("css/jquery.timepicker.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/bootstrap-datepicker.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/jquery.timepicker.css")}}>
 
 
-    <link rel="stylesheet" href={{asset("css/flaticon.css")}}>
-    <link rel="stylesheet" href={{asset("css/icomoon.css")}}>
-    <link rel="stylesheet" href={{asset("css/style.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/flaticon.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/icomoon.css")}}>
+    <link rel="stylesheet" href={{secure_asset("css/style.css")}}>
   </head>
 
   <body>
