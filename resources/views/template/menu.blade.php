@@ -36,7 +36,11 @@
                             <!-- big screens layout display 3 pizzas in a row, and each rows has image aligned to left or right alternatively to form a checkboard pattern -->
                              <a href="#"
                                 class="img {{ $loop->index  % 6 <= 2  ? ' order-lg-last' : '' }}"
-                                style="background-image: url({{asset('storage/' . $pizza->image)}});"
+                                @if($pizza->image)
+                                      style="background-image: url({{asset('storage/' . $pizza->image)}});"
+                                @else
+                                      style="background-image: url(https://picsum.photos/1000/900);"
+                                @endif
                                 ></a>
                             <div class="text p-4">
                                 <h3>{{$pizza->name}}</h3>
