@@ -98,10 +98,10 @@
                     @empty
                     <tr>
                         <td colpsan="">
-
+                            No products found in this category
                         </td>
                     </tr>
-                            No products found in this category
+
                     @endforelse
             @empty
                 No categories found
