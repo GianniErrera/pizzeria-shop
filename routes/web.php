@@ -9,6 +9,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderlineController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ExtraController;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Extra;
@@ -59,11 +60,11 @@ Route::delete('/extra/{extra}', [ExtraController::class, 'delete'])->name('extra
 
 
 Route::get('/product/{product}', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('/product', [ProductController::class, 'store'])->name('product-extra.store');
 Route::patch('/product/{product}', [ProductController::class, 'update'])->name('product.update');
 Route::delete('/product/{product}', [ProductController::class, 'delete'])->name('product.delete');
 
 
-Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/orderlines/{orderline}', [OrderlineController::class, 'edit']);
 Route::post('/orderlines/{product_id}', [OrderlineController::class, 'store']);
 Route::patch('/orderlines/{orderline}', [OrderlineController::class, 'update']);
@@ -74,6 +75,6 @@ Route::delete('/orders/{order}', [OrderController::class, 'destroy']);
 
 
 
-Route::post('/menu', [MenuController::class, 'store']);
+
 
 
