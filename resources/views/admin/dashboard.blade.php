@@ -80,70 +80,68 @@
         <div class="container mb-4">
             <div class="mb-2">
                 <table class="table">
-                @forelse ($categories as $category)
-                <tr>
-                    <td><h1 class="mb-2">{{ucfirst($category->name)}}</h1></td>
-                </tr>
+                    @forelse ($categories as $category)
+                    <tr>
+                        <td colspan="4"><h1 class="mb-2">{{ucfirst($category->name)}}</h1></td>
+                    </tr>
 
-                        @forelse ($category->products as $product)
-                            <tr>
-                                    <td class="">{{ $product->name }}</td>
-                                    <td class="row flex justify-content-between">
+                            @forelse ($category->products as $product)
+                                <tr>
+                                        <td class="">{{ $product->name }}</td>
                                         <td> {{ $product->description ? $product->description : "no description" }}</td>
-                                        <td class="number">€{{ $product->price }}</td>
-                                    </td>
-                                    <td class="row">
-                                        <form class="mr-1">
-                                            <a class="btn btn-primary" href="{{route("product.edit", ["product" => $product])}}">Edit
+                                        <td class="number">€{{ $product->price }}
+                                        </td>
+                                        <td class="row">
+                                            <form class="mr-1">
+                                                <a class="btn btn-primary" href="{{route("product.edit", ["product" => $product])}}">Edit
+                                                </a>
+                                            </form>
+                                            <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
                                             </a>
-                                        </form>
-                                        <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
-                                        </a>
-                                    </td>
+                                        </td>
+                                </tr>
+                            @empty
+                            <tr>
+                                <td colpsan="">
+                                    No products found in this category
+                                </td>
                             </tr>
-                        @empty
+
+                            @endforelse
+                    @empty
+                        No categories found
+                    @endforelse
+
+                    <tr>
+                        <td colspan="4"><h1 class="mb-2">{{ucfirst("extra")}}</h1></td>
+                    </tr>
+
+                    @forelse ($extras as $extra)
+                    <tr>
+                        <td>{{ $extra->name }} </td>
+                        <td> {{ $extra->description ?  $extra->description  : "" }}</td>
+                        <td>€{{ $extra->price }}</td>
+                        <td>
+                            <div class="row">
+                                <form class="mr-1">
+                                    <button class="btn btn-primary">Edit
+                                    </button>
+                                </form>
+                                <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    @empty
                         <tr>
-                            <td colpsan="">
-                                No products found in this category
+                            <td colspan="4">
+                                No extras found
                             </td>
                         </tr>
-
-                        @endforelse
-                @empty
-                    No categories found
-                @endforelse
-            </table>
+                    @endforelse
+                </table>
             </div>
-            <div class="mb-2">
-            <h1 class="mb-2">Extras</h1>
-            <table class="table">
 
-            @forelse ($extras as $extra)
-                <tr>
-                    <td>{{ $extra->name }} </td>
-                    <td> {{ $extra->description ?  $extra->description  : "" }}</td>
-                    <td>€{{ $extra->price }}</td>
-                    <td>
-                        <div class="row">
-                            <form class="mr-1">
-                                <button class="btn btn-primary">Edit
-                                </button>
-                            </form>
-                            <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="4">
-                        No extras found
-                    </td>
-                </tr>
-            @endforelse
-
-            </table>
-            </div>
         </div>
     </div>
 
