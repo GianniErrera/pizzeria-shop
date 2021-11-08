@@ -72,29 +72,71 @@
 
     <div class="container mb-4">
         <div class="mb-2">
-        <h1 class="mb-2">Pizzas</h1>
-        @foreach ($products as $product)
-            @if($product->category_id == "1")
-                <div class="row flex justify-content-between">
-                    <div>{{ $product->name }}</div>
-                    <div class="row flex justify-content-between">
-                        <div> {{ $product->description ? $product->description : "no description" }}</div>
+            <table class="table">
+            @forelse ($categories as $category)
+            <tr>
+                <td><h1 class="mb-2">{{ucfirst($category->name)}}</h1></td>
+            </tr>
 
-                            <div class="mx-2">€</div>
-                            <div class="number">{{ $product->price }}</div>
 
-                    </div>
-                </div>
-            @endif
-        @endforeach
+                    @forelse ($category->products as $product)
+                        <tr>
+                                <td class="">{{ $product->name }}</td>
+                                <td class="row flex justify-content-between">
+                                    <td> {{ $product->description ? $product->description : "no description" }}</td>
+                                    <td class="number">€{{ $product->price }}</td>
+                                </td>
+                                <td class="row">
+                                    <form class="mr-1">
+                                        <button class="btn btn-primary">Edit
+                                        </button>
+                                    </form>
+                                    <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
+                                    </a>
+                                </td>
+                        </tr>
+                    @empty
+                    <tr>
+                        <td colpsan="">
+
+                        </td>
+                    </tr>
+                            No products found in this category
+                    @endforelse
+            @empty
+                No categories found
+            @endforelse
+        </table>
         </div>
         <div class="mb-2">
         <h1 class="mb-2">Extras</h1>
-        @foreach ($extras as $extra)
-            <div class="flex justify-content-between">
-            {{ $extra->name }}  {{ $extra->description ?  "- " . $extra->description  : "" }} - €{{ $extra->price }}
-            </div>
-        @endforeach
+        <table class="table">
+
+        @forelse ($extras as $extra)
+            <tr>
+                <td>{{ $extra->name }} </td>
+                <td> {{ $extra->description ?  $extra->description  : "" }}</td>
+                <td>€{{ $extra->price }}</td>
+                <td>
+                    <div class="row">
+                        <form class="mr-1">
+                            <button class="btn btn-primary">Edit
+                            </button>
+                        </form>
+                        <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="4">
+                    No extras found
+                </td>
+            </tr>
+        @endforelse
+
+        </table>
         </div>
     </div>
 </div>

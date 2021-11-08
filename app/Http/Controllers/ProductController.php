@@ -18,4 +18,8 @@ class ProductController extends Controller
         ]);
     }
 
+    public function delete(Product $product) {
+
+    }
+
 }

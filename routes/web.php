@@ -52,6 +52,17 @@ Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])
 Route::get('/', function() { return view('public.customers-view');});
 
 
+
+Route::get('/extra/{extra}', [ExtraController::class, 'edit'])->name('extra.edit');
+Route::patch('/extra/{extra}', [ExtraController::class, 'update'])->name('extra.update');
+Route::delete('/extra/{extra}', [ExtraController::class, 'delete'])->name('extra.delete');
+
+
+Route::get('/product/{product}', [ProductController::class, 'edit'])->name('product.edit');
+Route::patch('/product/{product}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/product/{product}', [ProductController::class, 'delete'])->name('product.delete');
+
+
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/orderlines/{orderline}', [OrderlineController::class, 'edit']);
 Route::post('/orderlines/{product_id}', [OrderlineController::class, 'store']);
