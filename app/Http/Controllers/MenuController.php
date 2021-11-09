@@ -116,9 +116,31 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateProduct(Request $request, $id)
+    public function updateProduct(Request $request, Product $product)
     {
-        dd('ok');
+        $validated = $request->validate([
+            'name' => 'required|max:100|unique:extras',
+            'price' => 'numeric|required',
+            'category_id' => 'required|integer',
+            'description' => 'nullable|string',
+            'vegetarian' => 'boolean',
+            'vegan' => 'boolean',
+            'allergens' => 'nullable|string',
+            'image' => 'image|nullable'
+        ]);
+
+        if(request('image')) {
+            $extension = $request->file('image')->extension();
+            $path = $request->image->storePubliclyAs('images', $product->category->name . '-' . $product->id .  "." . $extension, 'public');
+            $product->image = $path;
+            $product->save();
+        }
+
+        $product->fill($validated);
+        $product->save();
+
+        $request->session()->flash('status', 'Product modified successfully!');
+        return redirect()->route('admin.dashboard');
     }
 
     /**
@@ -130,7 +152,9 @@ class MenuController extends Controller
      */
     public function updateExtra(Request $request, $id)
     {
-        dd('good');
+
+
+
     }
 
     /**

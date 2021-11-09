@@ -19,7 +19,8 @@
                 </ul>
             </div>
         @endif
-        <form method="POST"
+        <form
+            method="POST"
             action="@isset($product){{route('product.update', ['product' => $product])}}
             @else{{route('extra.update', ['extra' => $extra])}}
             @endisset"
@@ -39,8 +40,8 @@
             <div class="form-group">
                 <label for="name">@isset($product){{"Product name"}}@else{{"Extra name"}}@endisset</label>
                 @isset($product)
-                <input type="text" class="form-control" id="name" name="name" value="@if(old('name')) {{old('name')}} @else {{$product->name}} @endif" aria-describedby="name" placeholder="Product name">
-                @else<input type="text" class="form-control" id="name" name="name" value="@if(old('name')) {{old('name')}} @else {{$extra->name}} @endif" aria-describedby="name" placeholder="Extra name">
+                <input type="text" class="form-control" id="name" name="name" value="@if(old('name')){{old('name')}}@else{{$product->name}}@endif" aria-describedby="name" placeholder="Product name">
+                @else<input type="text" class="form-control" id="name" name="name" value="@if(old('name')){{old('name')}}@else{{$extra->name}}@endif" aria-describedby="name" placeholder="Extra name">
                 @endisset
             </div>
             <div class="form-group">
@@ -53,9 +54,9 @@
             <div class="form-group">
                 <label for="price">Price</label>
                 @isset($product)
-                <input type="text" class="form-control" name="price" id="price" value="@if(old('price')) {{old('price')}} @else {{$product->price}} @endif" placeholder="Price">
+                <input type="text" class="form-control" name="price" id="price" value="@if(old('price')){{old('price')}}@else {{$product->price}}@endif" placeholder="Price">
                 @else
-                <input type="text" class="form-control" name="price" id="price" value="@if(old('price')) {{old('price')}} @else {{$extra->price}} @endif" placeholder="Price">
+                <input type="text" class="form-control" name="price" id="price" value="@if(old('price')){{old('price')}}@else {{$extra->price}}@endif" placeholder="Price">
                 @endisset
             </div>
             @isset($product)
