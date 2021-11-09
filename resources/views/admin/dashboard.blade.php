@@ -91,7 +91,7 @@
                                         <td> {{ $product->description ? $product->description : "no description" }}</td>
                                         <td class="number">€{{ $product->price }}
                                         </td>
-                                        <td class="row">
+                                        <td class="d-flex" colspan="2">
                                                 <a class="btn btn-primary mr-1" href="{{route("product.edit", ["product" => $product])}}">Edit
                                                 </a>
                                             <form
@@ -125,7 +125,7 @@
                         <td>{{ $extra->name }} </td>
                         <td> {{ $extra->description ?  $extra->description  : "" }}</td>
                         <td>€{{ $extra->price }}</td>
-                        <td class="row" colspan="2">
+                        <td class="d-flex" colspan="2">
                                 <a class="btn btn-primary mr-1" href="{{route("extra.edit", ["extra" => $extra])}}">Edit
                                 </a>
                             <form
