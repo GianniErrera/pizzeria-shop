@@ -53,14 +53,15 @@ Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])
 Route::get('/', function() { return view('public.customers-view');});
 
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
+
 Route::get('/product-extra/{product}', [MenuController::class, 'editProduct'])->name('product.edit');
 Route::post('/store', [MenuController::class, 'storeProductOrExtra'])->name('product-extra.store');
 Route::patch('/product/{product}', [MenuController::class, 'updateProduct'])->name('product.update');
-Route::delete('/product/{product}', [MenuController::class, 'deleteProduct'])->name('product.delete');
+Route::delete('/product/{product}', [MenuController::class, 'destroyProduct'])->name('product.delete');
 
 Route::get('/extra/{extra}', [MenuController::class, 'editExtra'])->name('extra.edit');
 Route::patch('/extra/{extra}', [MenuController::class, 'updateExtra'])->name('extra.update');
-Route::delete('/extra/{extra}', [MenuController::class, 'deleteExtra'])->name('extra.delete');
+Route::delete('/extra/{extra}', [MenuController::class, 'destroyExtra'])->name('extra.delete');
 
 
 Route::get('/orderlines/{orderline}', [OrderlineController::class, 'edit']);

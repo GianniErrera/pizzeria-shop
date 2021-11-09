@@ -19,8 +19,13 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{route('product-extra.store')}}" enctype="multipart/form-data">
+        <form method="POST"
+            action="@isset($product){{route('product.update', ['product' => $product])}}
+            @else{{route('extra.update', ['extra' => $extra])}}
+            @endisset"
+            enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
             @isset($product)
                 <div class="form-group">
                     <label for="category_id">Product category</label>

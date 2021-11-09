@@ -92,12 +92,16 @@
                                         <td class="number">€{{ $product->price }}
                                         </td>
                                         <td class="row">
-                                            <form class="mr-1">
-                                                <a class="btn btn-primary" href="{{route("product.edit", ["product" => $product])}}">Edit
+                                                <a class="btn btn-primary mr-1" href="{{route("product.edit", ["product" => $product])}}">Edit
                                                 </a>
+                                            <form
+                                                action="{{route('product.delete', ['product' => $product])}}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
+                                                </button>
                                             </form>
-                                            <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
-                                            </a>
                                         </td>
                                 </tr>
                             @empty
@@ -122,12 +126,17 @@
                         <td> {{ $extra->description ?  $extra->description  : "" }}</td>
                         <td>€{{ $extra->price }}</td>
                         <td class="row">
-                            <form class="mr-1">
-                                <a class="btn btn-primary" href="{{route("extra.edit", ["extra" => $extra])}}">Edit
+                                <a class="btn btn-primary mr-1" href="{{route("extra.edit", ["extra" => $extra])}}">Edit
                                 </a>
+                            <form
+                            action="{{route('extra.delete', ['extra' => $extra])}}"
+                            method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
+                            </button>
                             </form>
-                            <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
-                            </a>
+
                         </td>
                     </tr>
                     @empty

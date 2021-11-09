@@ -83,9 +83,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show(Product $product) {
+        return view('template.product-detail', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -117,7 +118,7 @@ class MenuController extends Controller
      */
     public function updateProduct(Request $request, $id)
     {
-        //
+        dd('ok');
     }
 
     /**
@@ -129,7 +130,7 @@ class MenuController extends Controller
      */
     public function updateExtra(Request $request, $id)
     {
-        //
+        dd('good');
     }
 
     /**
@@ -138,9 +139,12 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroyProduct($id)
+    public function destroyProduct(Product $product)
     {
-        //
+        $product->delete();
+
+        request()->session()->flash('status', 'Product deleted successfully!');
+        return back();
     }
 
      /**
@@ -149,8 +153,11 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroyExtra($id)
+    public function destroyExtra(Extra $extra)
     {
-        //
+        $extra->delete();
+
+        request()->session()->flash('status', 'Extra deleted successfully!');
+        return back();
     }
 }
