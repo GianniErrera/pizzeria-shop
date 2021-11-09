@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Extra;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 
 class MenuController extends Controller
@@ -119,7 +120,7 @@ class MenuController extends Controller
     public function updateProduct(Request $request, Product $product)
     {
         $validated = $request->validate([
-            'name' => 'required|max:100|unique:extras',
+            'name' => ['required', 'max:100', Rule::unique('products')->ignore($product->id)],
             'price' => 'numeric|required',
             'category_id' => 'required|integer',
             'description' => 'nullable|string',
@@ -150,10 +151,31 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateExtra(Request $request, $id)
-    {
+    public function updateExtra(Request $request, Extra $extra) {
 
+    $validated = $request->validate([
+        'name' => ['required', 'max:100', Rule::unique('extras')->ignore($extra->id)],
+        'price' => 'numeric|required',
+        'category_id' => 'nullable|integer',
+        'description' => 'nullable|string',
+        'vegetarian' => 'boolean',
+        'vegan' => 'boolean',
+        'allergens' => 'nullable|string',
+        'image' => 'image|nullable'
+    ]);
 
+    if(request('image')) {
+        $extension = $request->file('image')->extension();
+        $path = $request->image->storePubliclyAs('images', 'extra-' . $extra->id .  "." . $extension, 'public');
+        $extra->image = $path;
+        $extra->save();
+    }
+
+    $extra->fill($validated);
+    $extra->save();
+
+    $request->session()->flash('status', 'Extra modified successfully!');
+    return redirect()->route('admin.dashboard');
 
     }
 
