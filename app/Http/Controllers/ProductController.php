@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Extra;
 
 class ProductController extends Controller
@@ -55,7 +56,7 @@ class ProductController extends Controller
     }
 
     public function edit(Product $product) {
-        dd('working');
+        return view('admin.product-extra-edit', ['product' => $product, 'categories' => Category::all()->sortBy('sort_order')]);
     }
 
     public function update(Product $product, Request $request) {

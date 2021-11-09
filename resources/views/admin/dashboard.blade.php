@@ -121,15 +121,13 @@
                         <td>{{ $extra->name }} </td>
                         <td> {{ $extra->description ?  $extra->description  : "" }}</td>
                         <td>€{{ $extra->price }}</td>
-                        <td>
-                            <div class="row">
-                                <form class="mr-1">
-                                    <button class="btn btn-primary">Edit
-                                    </button>
-                                </form>
-                                <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
+                        <td class="row">
+                            <form class="mr-1">
+                                <a class="btn btn-primary" href="{{route("extra.edit", ["extra" => $extra])}}">Edit
                                 </a>
-                            </div>
+                            </form>
+                            <a class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
+                            </a>
                         </td>
                     </tr>
                     @empty

@@ -52,17 +52,15 @@ Route::get('/admin/incoming-orders', [AdminController::class, 'show'])->name('or
 Route::post('/admin/dispatched/{order}', [AdminController::class, 'dispatched'])->name('order.dispatched');
 Route::get('/', function() { return view('public.customers-view');});
 
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/product-extra/{product}', [MenuController::class, 'editProduct'])->name('product.edit');
+Route::post('/store', [MenuController::class, 'storeProductOrExtra'])->name('product-extra.store');
+Route::patch('/product/{product}', [MenuController::class, 'updateProduct'])->name('product.update');
+Route::delete('/product/{product}', [MenuController::class, 'deleteProduct'])->name('product.delete');
 
-
-Route::get('/extra/{extra}', [ExtraController::class, 'edit'])->name('extra.edit');
-Route::patch('/extra/{extra}', [ExtraController::class, 'update'])->name('extra.update');
-Route::delete('/extra/{extra}', [ExtraController::class, 'delete'])->name('extra.delete');
-
-
-Route::get('/product/{product}', [ProductController::class, 'edit'])->name('product.edit');
-Route::post('/product', [ProductController::class, 'store'])->name('product-extra.store');
-Route::patch('/product/{product}', [ProductController::class, 'update'])->name('product.update');
-Route::delete('/product/{product}', [ProductController::class, 'delete'])->name('product.delete');
+Route::get('/extra/{extra}', [MenuController::class, 'editExtra'])->name('extra.edit');
+Route::patch('/extra/{extra}', [MenuController::class, 'updateExtra'])->name('extra.update');
+Route::delete('/extra/{extra}', [MenuController::class, 'deleteExtra'])->name('extra.delete');
 
 
 Route::get('/orderlines/{orderline}', [OrderlineController::class, 'edit']);
