@@ -176,7 +176,7 @@
                                 ></a>
                             <div class="text p-4">
                                 <h3>{{$pizza->name}}</h3>
-                                <p @media (min-width: 1200px) { style="height:5rem; overflow:hidden" }>{{ $pizza->description }} </p>
+                                <p @media (min-width: 1200px) { style="height:5rem; overflow:hidden;  text-overflow: ellipsis;" }>{{ $pizza->description }} </p>
                                 <p class="price"><span>€{{ $pizza->price }}</span> <a href="{{route("product.show", ['product' => $pizza])}}" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
                             </div>
                         </div>
@@ -197,7 +197,7 @@
       <div class="row">
           <!-- first we divide all record in two columns, then we create two columns to display the pizzas -->
           @php
-          $number_pizzas_per_row = intdiv(count($pizzas), 2)
+           $number_pizzas_per_row = ceil(count($pizzas) / 2)
           @endphp
 
               @forelse($pizzas as $pizza)
@@ -216,12 +216,12 @@
                                       <h3><span>{{ $pizza->name }}</span></h3>
                                       <span class="price">€{{ $pizza->price }}</span>
                                   </div>
-                                  <div class="d-block" style="height:5rem; overflow:hidden">
+                                  <div class="d-block" style="height:5rem; overflow:hidden;  text-overflow: ellipsis;">
                                       <p>{{ $pizza->description }}</p>
                                   </div>
                               </div>
                           </div>
-                  @elseif($loop->last || $loop->index == $number_pizzas_per_row - 1) <!-- this line checks if element is the last in its column so div may be closed -->
+                  @elseif($loop->last || $loop->index + 1 == $number_pizzas_per_row) <!-- this line checks if element is the last in its column so div may be closed -->
                           <div class="pricing-entry d-flex ftco-animate">
                               <div class="img"
                                   @if($pizza->image)
@@ -235,7 +235,7 @@
                                       <h3><span>{{ $pizza->name }}</span></h3>
                                       <span class="price">€{{ $pizza->price }}</span>
                                   </div>
-                                  <div class="d-block" style="height:5rem; overflow:hidden">
+                                  <div class="d-block" style="height:5rem; overflow:hidden;  text-overflow: ellipsis;">
                                       <p>{{ $pizza->description }}</p>
                                   </div>
                               </div>
@@ -255,7 +255,7 @@
                                   <h3><span>{{ $pizza->name }}</span></h3>
                                   <span class="price">€{{ $pizza->price }}</span>
                               </div>
-                              <div class="d-block" style="height:5rem; overflow:hidden">
+                              <div class="d-block" style="height:5rem; overflow:hidden;  text-overflow: ellipsis;">
                                   <p>{{ $pizza->description }}</p>
                               </div>
                           </div>
@@ -397,7 +397,7 @@
                                                       ></a>
                                                       <div class="text">
                                                           <h3><a href="#">{{ $product->name }}</a></h3>
-                                                          <div class="container-fluid" style="height:5rem; overflow:hidden">
+                                                          <div class="container-fluid" style="height:5rem; overflow:hidden;  text-overflow: ellipsis;">
                                                           <p>{{ str_pad($product->description, 120, " ")}}</p>
                                                           </div>
 

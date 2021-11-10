@@ -66,7 +66,7 @@
         <div class="row">
             <!-- first we divide all record in two columns, then we create two columns to display the pizzas -->
             @php
-            $number_pizzas_per_row = intdiv(count($pizzas), 2)
+            $number_pizzas_per_row = ceil(count($pizzas) / 2)
             @endphp
 
                 @forelse($pizzas as $pizza)
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                    @elseif($loop->last || $loop->index == $number_pizzas_per_row - 1) <!-- this line checks if element is the last in its column so div may be closed -->
+                    @elseif($loop->last || $loop->index + 1 == $number_pizzas_per_row) <!-- this line checks if element is the last in its column so div may be closed -->
                             <div class="pricing-entry d-flex ftco-animate">
                                 <div class="img"
                                     @if($pizza->image)
