@@ -491,9 +491,9 @@
         @empty
 
             <div class="mb-5 d-flex justify-content-center">
-                <span>
+                <span class="text-center">
                         <i>
-                            <h1 style="color:#fac564" class="ml-5 heading-section span">
+                            <h1 style="color:#fac564" class="heading-section span">
                                 Your cart is empty
                             </h1>
                         </i>
