@@ -53,142 +53,139 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
-  <section class="ftco-intro">
-      <div class="container-wrap">
-          <div class="wrap d-md-flex">
-              <div class="info">
-                  <div class="row no-gutters">
-                      <div class="col-md-4 d-flex ftco-animate">
-                          <div class="icon"><span class="icon-phone"></span></div>
-                          <div class="text">
-                              <h3>000 (123) 456 7890</h3>
-                              <p>A small river named Duden flows</p>
-                          </div>
-                      </div>
-                      <div class="col-md-4 d-flex ftco-animate">
-                          <div class="icon"><span class="icon-my_location"></span></div>
-                          <div class="text">
-                              <h3>198 West 21th Street</h3>
-                              <p>Suite 721 New York NY 10016</p>
-                          </div>
-                      </div>
-                      <div class="col-md-4 d-flex ftco-animate">
-                          <div class="icon"><span class="icon-clock-o"></span></div>
-                          <div class="text">
-                              <h3>Open Monday-Friday</h3>
-                              <p>8:00am - 9:00pm</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="social d-md-flex pl-md-5 p-4 align-items-center">
-                  <ul class="social-icon">
-            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-          </ul>
-              </div>
-          </div>
-      </div>
-  </section>
+<section class="ftco-intro">
+    <div class="container-wrap">
+        <div class="wrap d-md-flex">
+            <div class="info">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-phone"></span></div>
+                        <div class="text">
+                            <h3>000 (123) 456 7890</h3>
+                            <p>A small river named Duden flows</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-my_location"></span></div>
+                        <div class="text">
+                            <h3>198 West 21th Street</h3>
+                            <p>Suite 721 New York NY 10016</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-clock-o"></span></div>
+                        <div class="text">
+                            <h3>Open Monday-Friday</h3>
+                            <p>8:00am - 9:00pm</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social d-md-flex pl-md-5 p-4 align-items-center">
+                <ul class="social-icon">
+          <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+          <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+          <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+        </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <section class="ftco-about d-md-flex">
-      <div class="one-half img" style="background-image: url(images/about.jpg);"></div>
-      <div class="one-half ftco-animate">
-      <div class="heading-section ftco-animate ">
-        <h2 class="mb-4">Welcome to <span class="flaticon-pizza">Pizzeria da Gianni</span> ITalian restaurant</h2>
-      </div>
-      <div>
-                <p>Only the best recipes from Italian regional cuisine, prepared from food experts. Our goal is that of keeping our customers satisfied, everyone who has tried our specialities always comes back!</p>
-            </div>
-      </div>
-  </section>
+<section class="ftco-about d-md-flex">
+    <div class="one-half img" style="background-image: url(images/about.jpg);"></div>
+    <div class="one-half ftco-animate">
+    <div class="heading-section ftco-animate ">
+      <h2 class="mb-4">Welcome to <span class="flaticon-pizza">Pizzeria da Gianni</span> ITalian restaurant</h2>
+    </div>
+    <div>
+              <p>Only the best recipes from Italian regional cuisine, prepared from food experts. Our goal is that of keeping our customers satisfied, everyone who has tried our specialities always comes back!</p>
+          </div>
+    </div>
+</section>
 
-  <section class="ftco-section ftco-services">
-      <div class="overlay"></div>
-      <div class="container">
-          <div class="row justify-content-center mb-5 pb-3">
-        <div class="col-md-7 heading-section ftco-animate text-center">
-          <h2 class="mb-4">Our Services</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-        </div>
+<section class="ftco-section ftco-services">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+      <div class="col-md-7 heading-section ftco-animate text-center">
+        <h2 class="mb-4">Our Services</h2>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
       </div>
-          <div class="row">
-        <div class="col-md-4 ftco-animate">
-          <div class="media d-block text-center block-6 services">
-            <div class="icon d-flex justify-content-center align-items-center mb-5">
-                <span class="flaticon-diet"></span>
-            </div>
-            <div class="media-body">
-              <h3 class="heading">Healthy Foods</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-            </div>
+    </div>
+        <div class="row">
+      <div class="col-md-4 ftco-animate">
+        <div class="media d-block text-center block-6 services">
+          <div class="icon d-flex justify-content-center align-items-center mb-5">
+              <span class="flaticon-diet"></span>
           </div>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <div class="media d-block text-center block-6 services">
-            <div class="icon d-flex justify-content-center align-items-center mb-5">
-                <span class="flaticon-bicycle"></span>
-            </div>
-            <div class="media-body">
-              <h3 class="heading">Fastest Delivery</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <div class="media d-block text-center block-6 services">
-            <div class="icon d-flex justify-content-center align-items-center mb-5"><span class="flaticon-pizza-1"></span></div>
-            <div class="media-body">
-              <h3 class="heading">Original Recipes</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-            </div>
+          <div class="media-body">
+            <h3 class="heading">Healthy Foods</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
           </div>
         </div>
       </div>
+      <div class="col-md-4 ftco-animate">
+        <div class="media d-block text-center block-6 services">
+          <div class="icon d-flex justify-content-center align-items-center mb-5">
+              <span class="flaticon-bicycle"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Fastest Delivery</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>
       </div>
-  </section>
+      <div class="col-md-4 ftco-animate">
+        <div class="media d-block text-center block-6 services">
+          <div class="icon d-flex justify-content-center align-items-center mb-5"><span class="flaticon-pizza-1"></span></div>
+          <div class="media-body">
+            <h3 class="heading">Original Recipes</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
 
   <section class="ftco-section">
-      <div class="container">
-          <div class="row justify-content-center mb-5 pb-3">
-        <div class="col-md-7 heading-section ftco-animate text-center">
-          <h2 class="mb-4">Our pizzas</h2>
-          <p>These are some of our most popular pizzas</p>
-        </div>
-      </div>
-      </div>
-      <div class="container-wrap">
-          <div class="row no-gutters d-flex">
-              @forelse($pizzas as $pizza)
-                  <div class="col-lg-4 d-flex ftco-animate">
-                      <div class="services-wrap d-flex">
-                          <!-- big screens layout display 3 pizzas in a row, and each rows has image aligned to left or right alternatively to form a checkboard pattern -->
-                           <a href="#"
-                              class="img {{ $loop->index  % 6 <= 2  ? ' order-lg-last' : '' }}"
-                              @if($pizza->image)
-                                      style="background-image: url({{asset('storage/' . $pizza->image)}});"
-                              @else
-                                      style="background-image: url(https://picsum.photos/1000/900);"
-                              @endif
-                              ></a>
-                          <div class="text p-4" style="height:10rem; overflow:hidden;">
-                              <div>
+       <div class="container">
+           <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section ftco-animate text-center">
+                <h2 class="mb-4">Our pizzas</h2>
+                <p>These are some of our most popular pizzas</p>
+                </div>
+            </div>
+       </div>
+       <div class="container-wrap">
+            <div class="row no-gutters d-flex">
+                @forelse($pizzas as $pizza)
+                    <div class="col-lg-4 d-flex ftco-animate">
+                        <div class="services-wrap d-flex">
+                            <!-- big screens layout display 3 pizzas in a row, and each rows has image aligned to left or right alternatively to form a checkboard pattern -->
+                            <a href="#"
+                                class="img {{ $loop->index  % 6 <= 2  ? ' order-lg-last' : '' }}"
+                                @if($pizza->image)
+                                        style="background-image: url({{asset('storage/' . $pizza->image)}});"
+                                @else
+                                        style="background-image: url(https://picsum.photos/1000/900);"
+                                @endif
+                                ></a>
+                            <div class="text p-4">
                                 <h3>{{$pizza->name}}</h3>
-                                <p>{{ $pizza->description }} </p>
-                              </div>
-                              <p class="price"><span>€{{ $pizza->price }}</span> <a href="{{route("product.show", ['product' => $pizza])}}" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-                          </div>
-                      </div>
-                  </div>
-              @empty
-              <h2>No pizzas found</h2>
-              @endforelse
-          </div>
+                                <p @media (min-width: 1200px) { style="height:5rem; overflow:hidden" }>{{ $pizza->description }} </p>
+                                <p class="price"><span>€{{ $pizza->price }}</span> <a href="{{route("product.show", ['product' => $pizza])}}" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                <h2>No pizzas found</h2>
+                @endforelse
+            </div>
       </div>
-
       <div class="container">
           <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
         <div class="col-md-7 heading-section text-center ftco-animate">
@@ -206,7 +203,7 @@
               @forelse($pizzas as $pizza)
                   @if($loop->first || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the first in its column so div may be opened -->
                       <div class="col-md-6"> <!-- <- this opens the div tag -->
-                          <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
+                          <div class="pricing-entry d-flex ftco-animate">
                               <div class="img"
                                   @if($pizza->image)
                                       style="background-image: url({{asset('storage/' . $pizza->image)}});"
@@ -219,13 +216,13 @@
                                       <h3><span>{{ $pizza->name }}</span></h3>
                                       <span class="price">€{{ $pizza->price }}</span>
                                   </div>
-                                  <div class="d-block">
+                                  <div class="d-block" style="height:5rem; overflow:hidden">
                                       <p>{{ $pizza->description }}</p>
                                   </div>
                               </div>
                           </div>
                   @elseif($loop->last || $loop->index == $number_pizzas_per_row - 1) <!-- this line checks if element is the last in its column so div may be closed -->
-                          <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
+                          <div class="pricing-entry d-flex ftco-animate">
                               <div class="img"
                                   @if($pizza->image)
                                       style="background-image: url({{asset('storage/' . $pizza->image)}});"
@@ -238,14 +235,14 @@
                                       <h3><span>{{ $pizza->name }}</span></h3>
                                       <span class="price">€{{ $pizza->price }}</span>
                                   </div>
-                                  <div class="d-block">
+                                  <div class="d-block" style="height:5rem; overflow:hidden">
                                       <p>{{ $pizza->description }}</p>
                                   </div>
                               </div>
                           </div>
                       </div>  <!-- <- this closes the div tag -->
                   @else($loop->last || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the last in its column so div may be closed -->
-                      <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
+                      <div class="pricing-entry d-flex ftco-animate">
                           <div class="img"
                               @if($pizza->image)
                                   style="background-image: url({{asset('storage/' . $pizza->image)}});"
@@ -258,7 +255,7 @@
                                   <h3><span>{{ $pizza->name }}</span></h3>
                                   <span class="price">€{{ $pizza->price }}</span>
                               </div>
-                              <div class="d-block">
+                              <div class="d-block" style="height:5rem; overflow:hidden">
                                   <p>{{ $pizza->description }}</p>
                               </div>
                           </div>

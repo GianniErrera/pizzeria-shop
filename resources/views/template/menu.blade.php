@@ -44,7 +44,7 @@
                                 ></a>
                             <div class="text p-4">
                                 <h3>{{$pizza->name}}</h3>
-                                <p>{{ $pizza->description }} </p>
+                                <p @media (min-width: 1200px) { style="height:5rem; overflow:hidden" }>{{ $pizza->description }} </p>
                                 <p class="price"><span>€{{ $pizza->price }}</span> <a href="{{route("product.show", ['product' => $pizza])}}" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                 @forelse($pizzas as $pizza)
                     @if($loop->first || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the first in its column so div may be opened -->
                         <div class="col-md-6"> <!-- <- this opens the div tag -->
-                            <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
+                            <div class="pricing-entry d-flex ftco-animate">
                                 <div class="img"
                                     @if($pizza->image)
                                         style="background-image: url({{asset('storage/' . $pizza->image)}});"
@@ -85,13 +85,15 @@
                                         <h3><span>{{ $pizza->name }}</span></h3>
                                         <span class="price">€{{ $pizza->price }}</span>
                                     </div>
-                                    <div class="d-block">
+                                    <div class="d-block"
+                                    @media (min-width: 992px) { style="height:5rem; overflow:hidden" }
+                                    >
                                         <p>{{ $pizza->description }}</p>
                                     </div>
                                 </div>
                             </div>
                     @elseif($loop->last || $loop->index == $number_pizzas_per_row - 1) <!-- this line checks if element is the last in its column so div may be closed -->
-                            <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
+                            <div class="pricing-entry d-flex ftco-animate">
                                 <div class="img"
                                     @if($pizza->image)
                                         style="background-image: url({{asset('storage/' . $pizza->image)}});"
@@ -104,14 +106,16 @@
                                         <h3><span>{{ $pizza->name }}</span></h3>
                                         <span class="price">€{{ $pizza->price }}</span>
                                     </div>
-                                    <div class="d-block">
+                                    <div class="d-block"
+                                    @media (min-width: 992px) { style="height:5rem; overflow:hidden" }
+                                    >
                                         <p>{{ $pizza->description }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>  <!-- <- this closes the div tag -->
                     @else($loop->last || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the last in its column so div may be closed -->
-                        <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
+                        <div class="pricing-entry d-flex ftco-animate">
                             <div class="img"
                                 @if($pizza->image)
                                     style="background-image: url({{asset('storage/' . $pizza->image)}});"
@@ -124,7 +128,9 @@
                                     <h3><span>{{ $pizza->name }}</span></h3>
                                     <span class="price">€{{ $pizza->price }}</span>
                                 </div>
-                                <div class="d-block">
+                                <div class="d-block"
+                                @media (min-width: 992px) { style="height:5rem; overflow:hidden" }
+                                >
                                     <p>{{ $pizza->description }}</p>
                                 </div>
                             </div>
@@ -181,8 +187,10 @@
                                                         ></a>
                                                         <div class="text">
                                                             <h3><a href="#">{{ $product->name }}</a></h3>
-                                                            <div class="container-fluid" style="height:5rem; overflow:hidden">
-                                                            <p>{{ str_pad($product->description, 120, " ")}}</p>
+                                                            <div class="container-fluid"
+                                                            @media (min-width: 992px) { style="height:5rem; overflow:hidden" }
+                                                            >
+                                                                <p>{{ str_pad($product->description, 120, " ")}}</p>
                                                             </div>
 
                                                             <p class="price"><span>€{{$product->price}}</span></p>
