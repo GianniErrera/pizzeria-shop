@@ -70,7 +70,7 @@
             @endphp
 
                 @forelse($pizzas as $pizza)
-                    @if($loop->first || $loop->index == $number_pizzas_per_row + 1) <!-- this line checks if element is the first in its column so div may be opened -->
+                    @if($loop->first || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the first in its column so div may be opened -->
                         <div class="col-md-6"> <!-- <- this opens the div tag -->
                             <div class="pricing-entry d-flex ftco-animate">
                                 <div class="img"
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                             </div>
-                    @elseif($loop->last || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the last in its column so div may be closed -->
+                    @elseif($loop->last || $loop->index == $number_pizzas_per_row - 1) <!-- this line checks if element is the last in its column so div may be closed -->
                             <div class="pricing-entry d-flex ftco-animate">
                                 <div class="img"
                                     @if($pizza->image)
