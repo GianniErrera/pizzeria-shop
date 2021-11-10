@@ -53,7 +53,7 @@
 		      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item {{ request()->is('home') ? 'active' : '' }}"><a href="index" class="nav-link">Home</a></li>
+	          <li class="nav-item {{ request()->is('index') ? 'active' : '' }}"><a href="index" class="nav-link">Home</a></li>
 	          <li class="nav-item {{ request()->is('menu') ? 'active' : '' }}"><a href="menu" class="nav-link">Menu</a></li>
 	          <li class="nav-item {{ request()->is('services') ? 'active' : '' }}"><a href="services" class="nav-link">Services</a></li>
 	          <li class="nav-item {{ request()->is('blog') ? 'active' : '' }}"><a href="blog" class="nav-link">Blog</a></li>
