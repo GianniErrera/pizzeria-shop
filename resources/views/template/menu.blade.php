@@ -72,7 +72,7 @@
                 @forelse($pizzas as $pizza)
                     @if($loop->first || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the first in its column so div may be opened -->
                         <div class="col-md-6"> <!-- <- this opens the div tag -->
-                            <div class="pricing-entry d-flex ftco-animate">
+                            <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
                                 <div class="img"
                                     @if($pizza->image)
                                         style="background-image: url({{asset('storage/' . $pizza->image)}});"
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                     @elseif($loop->last || $loop->index == $number_pizzas_per_row - 1) <!-- this line checks if element is the last in its column so div may be closed -->
-                            <div class="pricing-entry d-flex ftco-animate">
+                            <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
                                 <div class="img"
                                     @if($pizza->image)
                                         style="background-image: url({{asset('storage/' . $pizza->image)}});"
@@ -111,7 +111,7 @@
                             </div>
                         </div>  <!-- <- this closes the div tag -->
                     @else($loop->last || $loop->index == $number_pizzas_per_row) <!-- this line checks if element is the last in its column so div may be closed -->
-                        <div class="pricing-entry d-flex ftco-animate">
+                        <div class="pricing-entry d-flex ftco-animate" style="height:5rem; overflow:hidden">
                             <div class="img"
                                 @if($pizza->image)
                                     style="background-image: url({{asset('storage/' . $pizza->image)}});"
